@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIADV – Maison Internationale d'Assistance aux Déficients Visuels</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ─────────── RESET & VARIABLES ─────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Couleurs issues du logo et du brief */
+            --deep-blue: #0a2a44;
+            --royal-blue: #1a4f7a;
+            --light-blue: #e6f0fa;
+            --green-accent: #2e7d32;
+            --white: #ffffff;
+            --gray-light: #f7f9fc;
+            --gray-border: #e2e8f0;
+            --gray-text: #2d3748;
+            --gray-muted: #4a5568;
+            
+            /* Couleur unique pour TOUS les titres */
+            --title-color: #1a4f7a; /* Bleu royal vif */
+
+            --shadow-sm: 0 2px 12px rgba(10, 42, 68, 0.06);
+            --shadow-md: 0 8px 30px rgba(10, 42, 68, 0.10);
+            --shadow-lg: 0 20px 60px rgba(10, 42, 68, 0.14);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Accessibilité : contraste élevé (toggle) */
+        body.high-contrast {
+            --deep-blue: #000033;
+            --royal-blue: #003366;
+            --light-blue: #e6f0fa;
+            --green-accent: #004d00;
+            --gray-light: #ffffff;
+            --gray-border: #666666;
+            --gray-text: #000000;
+            --gray-muted: #1a1a1a;
+            --title-color: #000000;
+            background: #ffffff;
+            color: #000000;
+        }
+        body.high-contrast .btn {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        body.high-contrast .btn-outline {
+            background: transparent;
+            color: #000000;
+            border: 2px solid #000000;
+        }
+        body.high-contrast .btn-outline:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--gray-light);
+            color: var(--gray-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ─────────── TYPOGRAPHIE ─────────── */
+        /* Application de la couleur unique à TOUS les titres */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: var(--title-color); /* Couleur unique et distinctive */
+        }
+        h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); }
+        h3 { font-size: clamp(1.4rem, 2vw, 1.8rem); }
+        h4 { font-size: 1.2rem; }
+
+        .section-title {
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--green-accent);
+            border-radius: 4px;
+        }
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-muted);
+            max-width: 60ch;
+            margin-top: 0.8rem;
+            margin-bottom: 2.8rem;
+        }
+        .text-center .section-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ─────────── BOUTONS ─────────── */
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2.8rem;
+            background: var(--green-accent);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(46, 125, 50, 0.25);
+            cursor: pointer;
+            letter-spacing: 0.02em;
+        }
+        .btn:hover {
+            background: #1b5e20;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(46, 125, 50, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--deep-blue);
+            box-shadow: inset 0 0 0 2px var(--deep-blue);
+        }
+        .btn-outline:hover {
+            background: var(--deep-blue);
+            color: var(--white);
+            box-shadow: 0 12px 32px rgba(10, 42, 68, 0.20);
+        }
+        .btn-donation {
+            background: var(--deep-blue);
+            box-shadow: 0 4px 16px rgba(10, 42, 68, 0.25);
+        }
+        .btn-donation:hover {
+            background: #061f33;
+        }
+
+        /* ─────────── ACCESSIBILITÉ (floating controls) ─────────── */
+        .accessibility-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+            padding: 10px 12px;
+            border-radius: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-border);
+        }
+        .accessibility-bar button {
+            background: none;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--deep-blue);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .accessibility-bar button:hover {
+            background: var(--light-blue);
+        }
+        .accessibility-bar button:focus-visible {
+            outline: 3px solid var(--green-accent);
+        }
+
+        /* ─────────── HEADER : Logo à gauche, Menu à droite ─────────── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            padding: 0.5rem 0;
+            transition: box-shadow 0.3s;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* ── Espace réservé au LOGO (à gauche) ── */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--deep-blue);
+            background: var(--gray-light); /* Léger fond pour bien marquer la zone */
+            padding: 6px 16px 6px 12px;
+            border-radius: 60px;
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .logo:hover {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.6rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gray-muted);
+        }
+        .logo-tagline {
+            font-size: 0.65rem;
+            color: var(--green-accent);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            display: block;
+        }
+
+        /* ── Menu à DROITE ── */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .nav-links a {
+            padding: 0.4rem 1.2rem;
+            text-decoration: none;
+            color: var(--gray-text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: 60px;
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            background: var(--light-blue);
+            color: var(--deep-blue);
+        }
+        .nav-links a.btn-nav {
+            background: var(--green-accent);
+            color: var(--white);
+        }
+        .nav-links a.btn-nav:hover {
+            background: #1b5e20;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--deep-blue);
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+        }
+
+        /* ─────────── HERO ─────────── */
+        .hero {
+            padding: 4rem 0 3rem;
+            background: linear-gradient(160deg, var(--gray-light) 0%, #eef2f7 100%);
+            border-bottom: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 79, 122, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+        .hero-content .hero-sub {
+            font-size: 1.2rem;
+            color: var(--gray-muted);
+            margin: 0.5rem 0 1.2rem;
+            font-weight: 400;
+        }
+        .hero-content p {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 50ch;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            background: var(--light-blue);
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--royal-blue);
+            font-size: 4rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ─────────── SECTIONS COMMUNES ─────────── */
+        .section {
+            padding: 5rem 0;
+        }
+        .section-alt {
+            background: var(--white);
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* ─────────── QUI SOMMES-NOUS ? (valeurs) ─────────── */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .value-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .value-card .icon {
+            font-size: 2.6rem;
+            color: var(--green-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .value-card h4 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+        }
+
+        /* ─────────── NOS MISSIONS ─────────── */
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .mission-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .mission-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+        .mission-card .icon {
+            font-size: 2.8rem;
+            color: var(--royal-blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .mission-card h4 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+        .mission-card p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+        }
+
+        /* ─────────── SERVICES ─────────── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 1.8rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .service-card .icon {
+            font-size: 2.4rem;
+            color: var(--green-accent);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .service-card h4 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+        }
+
+        /* ─────────── IMPACT (statistiques) ─────────── */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .impact-item {
+            background: var(--white);
+            padding: 2rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .impact-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--title-color);
+            line-height: 1.2;
+        }
+        .impact-label {
+            font-size: 1rem;
+            color: var(--gray-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* ─────────── PROGRAMMES ─────────── */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .program-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .program-card .prog-img {
+            height: 160px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--royal-blue);
+        }
+        .program-card .prog-body {
+            padding: 1.5rem;
+        }
+        .program-card .prog-body h4 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .program-card .prog-body p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+            margin-bottom: 0.5rem;
+        }
+        .program-card .prog-body .btn-small {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--green-accent);
+            color: var(--white);
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .program-card .prog-body .btn-small:hover {
+            background: #1b5e20;
+        }
+
+        /* ─────────── ACTUALITÉS ─────────── */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .news-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .news-card .news-img {
+            height: 150px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--royal-blue);
+        }
+        .news-card .news-body {
+            padding: 1.5rem;
+        }
+        .news-card .news-meta {
+            font-size: 0.8rem;
+            color: var(--gray-muted);
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .news-card .news-body h4 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .news-card .news-body p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+            margin-bottom: 0.5rem;
+        }
+        .news-card .news-body .btn-small {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--deep-blue);
+            color: var(--white);
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        .news-card .news-body .btn-small:hover {
+            background: var(--royal-blue);
+        }
+
+        /* ─────────── GALERIE ─────────── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .gallery-item {
+            aspect-ratio: 1/1;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--royal-blue);
+            border: 1px solid var(--gray-border);
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox.open {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 3rem;
+            color: var(--white);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ─────────── TÉMOIGNAGES ─────────── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .testimonial-card .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--royal-blue);
+            margin-bottom: 1rem;
+        }
+        .testimonial-card blockquote {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--gray-text);
+            margin-bottom: 0.8rem;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--title-color);
+        }
+        .testimonial-card .role {
+            font-size: 0.85rem;
+            color: var(--gray-muted);
+        }
+
+        /* ─────────── PARTENAIRES ─────────── */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .partner-item {
+            background: var(--white);
+            padding: 1.5rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .partner-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-md);
+        }
+        .partner-item .partner-logo {
+            font-size: 2.8rem;
+            color: var(--royal-blue);
+            opacity: 0.6;
+        }
+        .partner-item .partner-name {
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-top: 0.3rem;
+        }
+
+        /* ─────────── APPEL AUX DONS ─────────── */
+        .donation-section {
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .donation-section h2 {
+            color: var(--white);
+        }
+        .donation-section .section-title::after {
+            background: var(--green-accent);
+        }
+        .donation-section p {
+            max-width: 60ch;
+            margin: 1rem auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ─────────── À PROPOS (page intégrée) ─────────── */
+        .about-page {
+            background: var(--white);
+        }
+        .about-page .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-page .about-text p {
+            margin-bottom: 1rem;
+        }
+        .about-page .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-member .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--light-blue);
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--royal-blue);
+        }
+        .team-member h4 {
+            color: var(--title-color);
+        }
+        .team-member p {
+            font-size: 0.9rem;
+            color: var(--gray-muted);
+        }
+
+        /* ─────────── CONTACT ─────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+        .contact-info h3 {
+            color: var(--title-color);
+            margin-bottom: 1rem;
+        }
+        .contact-details {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1rem;
+        }
+        .contact-details i {
+            width: 1.8rem;
+            color: var(--green-accent);
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+        }
+        .contact-form label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--gray-text);
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--gray-light);
+            transition: var(--transition);
+            font-family: var(--font);
+            margin-bottom: 1.2rem;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--deep-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(10, 42, 68, 0.08);
+            outline: none;
+        }
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+        .contact-form .form-feedback {
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ─────────── FOOTER : Informations complètes en bas ─────────── */
+        footer {
+            background: var(--deep-blue);
+            color: rgba(255,255,255,0.8);
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: var(--white);
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .footer-social a {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .footer-social a:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ─────────── ANIMATIONS (fade-up) ─────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─────────── RESPONSIVE ─────────── */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-image {
+                order: -1;
+            }
+            .about-page .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem 0 0.5rem;
+                gap: 2px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                text-align: center;
+                padding: 0.6rem;
+                border-radius: 8px;
+            }
+            .hero {
+                padding: 2.5rem 0 2rem;
+            }
+            .values-grid,
+            .missions-grid,
+            .services-grid,
+            .impact-grid,
+            .programs-grid,
+            .news-grid,
+            .testimonials-grid,
+            .partners-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .accessibility-bar {
+                bottom: 10px;
+                right: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 8px 12px;
+                border-radius: 30px;
+            }
+            .accessibility-bar button {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+            /* Ajustement du logo sur mobile */
+            .logo {
+                padding: 4px 12px 4px 8px;
+            }
+            .logo-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .values-grid,
+            .missions-grid,
+            .services-grid,
+            .impact-grid,
+            .programs-grid,
+            .news-grid,
+            .testimonials-grid,
+            .partners-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-buttons .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── BARRE D'ACCESSIBILITÉ FLOTTANTE ─── -->
+    <div class="accessibility-bar" role="toolbar" aria-label="Options d'accessibilité">
+        <button id="fontPlus" aria-label="Augmenter la taille du texte"><i class="fas fa-plus"></i> A+</button>
+        <button id="fontMinus" aria-label="Diminuer la taille du texte"><i class="fas fa-minus"></i> A-</button>
+        <button id="contrastToggle" aria-label="Activer le contraste élevé"><i class="fas fa-circle"></i> Contraste</button>
+        <button id="resetAccess" aria-label="Réinitialiser les options"><i class="fas fa-undo-alt"></i> Réinitialiser</button>
+    </div>
+
+    <!-- ─── HEADER : Logo à gauche / Menu à droite ─── -->
+    <header id="header">
+        <div class="container nav">
+            <!-- ESPACE RÉSERVÉ POUR LE LOGO (à gauche) -->
+            <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
+                <div class="logo-text">
+                    MIADV
+                    <span>Maison Internationale d'Assistance aux Déficients Visuels</span>
+                    <span class="logo-tagline">Prévenir · Soigner · Réadapter · Inclure</span>
+                </div>
+            </a>
+
+            <!-- MENU À DROITE -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks" role="navigation">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#a-propos">À propos</a></li>
+                <li><a href="#missions">Nos missions</a></li>
+                <li><a href="#services">Nos services</a></li>
+                <li><a href="#programmes">Nos programmes</a></li>
+                <li><a href="#actualites">Actualités</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#don" class="btn-nav">Faire un don</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="accueil">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Ensemble, construisons un monde plus <span style="color:var(--green-accent);">inclusif</span>.</h1>
+                <p class="hero-sub">La MIADV accompagne, soigne, réadapte et favorise l'inclusion des personnes déficientes visuelles afin de leur permettre de vivre avec plus d'autonomie et de dignité.</p>
+                <div class="hero-buttons">
+                    <a href="#missions" class="btn">Découvrir nos actions</a>
+                    <a href="#don" class="btn btn-outline">Soutenir la MIADV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder" role="img" aria-label="Illustration : inclusion et accompagnement">
+                    <i class="fas fa-hands-helping"></i>
+                    <!-- Remplacez par une image réelle : <img src="chemin/vers/image.jpg" alt="..." /> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── QUI SOMMES-NOUS ? (valeurs) ─── -->
+    <section class="section" id="a-propos">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Une mission au service de l'inclusion</h2>
+                <p class="section-subtitle">La MIADV est une organisation dédiée à l'accompagnement des personnes déficientes visuelles, en France et à l'international.</p>
+            </div>
+            <div class="values-grid fade-up">
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                    <h4>Prévenir</h4>
+                    <p>Sensibilisation, prévention et dépistage des problèmes de vision.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-stethoscope"></i></span>
+                    <h4>Soigner</h4>
+                    <p>Orientation, accompagnement et accès aux soins adaptés.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-arrow-up"></i></span>
+                    <h4>Réadapter</h4>
+                    <p>Accompagnement vers l'autonomie et développement des capacités.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <h4>Inclure</h4>
+                    <p>Favoriser la participation sociale, éducative et professionnelle.</p>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:2.5rem;">
+                <a href="#a-propos-approfondi" class="btn btn-outline">En savoir plus sur la MIADV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOS MISSIONS (détaillées) ─── -->
+    <section class="section section-alt" id="missions">
+        <div class="container text-center">
+            <h2 class="section-title">Nos missions</h2>
+            <p class="section-subtitle">Quatre piliers pour une inclusion pleine et entière.</p>
+            <div class="missions-grid fade-up">
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-eye"></i></span>
+                    <h4>Prévenir</h4>
+                    <p>Sensibilisation, prévention et dépistage des problèmes liés à la vision.</p>
+                </div>
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-heartbeat"></i></span>
+                    <h4>Soigner</h4>
+                    <p>Orientation, accompagnement et accès aux soins adaptés.</p>
+                </div>
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-hand-holding-heart"></i></span>
+                    <h4>Réadapter</h4>
+                    <p>Accompagnement vers davantage d'autonomie et développement des capacités.</p>
+                </div>
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-user-friends"></i></span>
+                    <h4>Inclure</h4>
+                    <p>Favoriser la participation sociale, éducative et professionnelle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOS SERVICES ─── -->
+    <section class="section" id="services">
+        <div class="container text-center">
+            <h2 class="section-title">Nos services</h2>
+            <p class="section-subtitle">Un accompagnement sur mesure pour chaque personne.</p>
+            <div class="services-grid fade-up">
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-user-md"></i></span>
+                    <h4>Accompagnement des personnes</h4>
+                    <p>Suivi personnalisé et orientation vers les ressources adaptées.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-brain"></i></span>
+                    <h4>Réadaptation</h4>
+                    <p>Programmes de rééducation et d'apprentissage de nouvelles compétences.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-bullhorn"></i></span>
+                    <h4>Sensibilisation</h4>
+                    <p>Campagnes d'information et actions de prévention grand public.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-ambulance"></i></span>
+                    <h4>Orientation médicale</h4>
+                    <p>Accès aux soins ophtalmologiques et suivi orthoptique.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                    <h4>Formation</h4>
+                    <p>Ateliers éducatifs et formation des aidants et professionnels.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-hands-helping"></i></span>
+                    <h4>Accompagnement social</h4>
+                    <p>Aide aux démarches, soutien psychologique et insertion sociale.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-school"></i></span>
+                    <h4>Inclusion scolaire</h4>
+                    <p>Adaptations pédagogiques et accompagnement en milieu scolaire.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-briefcase"></i></span>
+                    <h4>Inclusion professionnelle</h4>
+                    <p>Accompagnement vers l'emploi et formation professionnelle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOTRE IMPACT (statistiques) ─── -->
+    <section class="section section-alt" id="impact">
+        <div class="container text-center">
+            <h2 class="section-title">Notre impact</h2>
+            <p class="section-subtitle">Des chiffres qui témoignent de notre engagement.</p>
+            <div class="impact-grid fade-up">
+                <div class="impact-item">
+                    <div class="impact-number" data-target="1200">0</div>
+                    <div class="impact-label">Personnes accompagnées</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" data-target="350">0</div>
+                    <div class="impact-label">Actions réalisées</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" data-target="25">0</div>
+                    <div class="impact-label">Programmes mis en place</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" data-target="45">0</div>
+                    <div class="impact-label">Partenaires actifs</div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gray-muted);">
+                * Ces chiffres sont temporaires et seront mis à jour avec les données officielles.
+            </p>
+        </div>
+    </section>
+
+    <!-- ─── NOS PROGRAMMES ─── -->
+    <section class="section" id="programmes">
+        <div class="container text-center">
+            <h2 class="section-title">Nos programmes</h2>
+            <p class="section-subtitle">Des actions concrètes pour changer des vies.</p>
+            <div class="programs-grid fade-up">
+                <div class="program-card">
+                    <div class="prog-img"><i class="fas fa-child"></i></div>
+                    <div class="prog-body">
+                        <h4>École inclusive</h4>
+                        <p>Accompagnement des enfants déficients visuels en milieu scolaire.</p>
+                        <p><strong>Objectif :</strong> Assurer une scolarité épanouissante.</p>
+                        <a href="#" class="btn-small">Découvrir</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="prog-img"><i class="fas fa-briefcase"></i></div>
+                    <div class="prog-body">
+                        <h4>Insertion professionnelle</h4>
+                        <p>Formation et accompagnement vers l'emploi pour les adultes malvoyants.</p>
+                        <p><strong>Objectif :</strong> Autonomie financière et sociale.</p>
+                        <a href="#" class="btn-small">Découvrir</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="prog-img"><i class="fas fa-heart"></i></div>
+                    <div class="prog-body">
+                        <h4>Bien-être et réadaptation</h4>
+                        <p>Ateliers de rééducation et soutien psychologique.</p>
+                        <p><strong>Objectif :</strong> Renforcer la confiance et l'autonomie.</p>
+                        <a href="#" class="btn-small">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ACTUALITÉS ─── -->
+    <section class="section section-alt" id="actualites">
+        <div class="container text-center">
+            <h2 class="section-title">Actualités</h2>
+            <p class="section-subtitle">Suivez nos dernières actions et événements.</p>
+            <div class="news-grid fade-up">
+                <div class="news-card">
+                    <div class="news-img"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="news-body">
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 12 mai 2025</span><span>Événement</span></div>
+                        <h4>Journée de dépistage gratuite</h4>
+                        <p>Plus de 200 personnes ont bénéficié d'un dépistage visuel gratuit.</p>
+                        <a href="#" class="btn-small">Lire la suite</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img"><i class="fas fa-hands"></i></div>
+                    <div class="news-body">
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 28 avril 2025</span><span>Partenariat</span></div>
+                        <h4>Nouveau partenariat avec l'Université</h4>
+                        <p>Un programme de recherche sur l'accessibilité numérique.</p>
+                        <a href="#" class="btn-small">Lire la suite</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img"><i class="fas fa-users"></i></div>
+                    <div class="news-body">
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 10 mars 2025</span><span>Formation</span></div>
+                        <h4>Formation des aidants</h4>
+                        <p>Une formation pour mieux accompagner les proches déficients visuels.</p>
+                        <a href="#" class="btn-small">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── GALERIE ─── -->
+    <section class="section" id="galerie">
+        <div class="container text-center">
+            <h2 class="section-title">Galerie</h2>
+            <p class="section-subtitle">Retour en images sur nos activités.</p>
+            <div class="gallery-grid fade-up" id="galleryGrid">
+                <!-- 6 éléments de galerie (remplacer par des images réelles) -->
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/1a4f7a/ffffff?text=MIADV+1"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/2e7d32/ffffff?text=MIADV+2"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/0a2a44/ffffff?text=MIADV+3"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/1a4f7a/ffffff?text=MIADV+4"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/2e7d32/ffffff?text=MIADV+5"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/0a2a44/ffffff?text=MIADV+6"><i class="fas fa-camera"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="close" id="lightboxClose" aria-label="Fermer">&times;</button>
+        <img src="" alt="Agrandissement" id="lightboxImg" />
+    </div>
+
+    <!-- ─── TÉMOIGNAGES ─── -->
+    <section class="section section-alt" id="temoignages">
+        <div class="container text-center">
+            <h2 class="section-title">Ils témoignent</h2>
+            <p class="section-subtitle">La parole de ceux que nous accompagnons.</p>
+            <div class="testimonials-grid fade-up">
+                <div class="testimonial-card">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <blockquote>"Grâce à la MIADV, j'ai retrouvé confiance en moi et une autonomie que je croyais perdue."</blockquote>
+                    <div class="author">Marie Dupont</div>
+                    <div class="role">Bénéficiaire</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <blockquote>"L'accompagnement professionnel et humain de la MIADV a changé ma vie."</blockquote>
+                    <div class="author">Jean-Pierre Martin</div>
+                    <div class="role">Bénéficiaire</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <blockquote>"Une équipe compétente et bienveillante. Je recommande vivement."</blockquote>
+                    <div class="author">Sophie Laurent</div>
+                    <div class="role">Parent d'un enfant accompagné</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PARTENAIRES ─── -->
+    <section class="section" id="partenaires">
+        <div class="container text-center">
+            <h2 class="section-title">Nos partenaires</h2>
+            <p class="section-subtitle">Des acteurs engagés à nos côtés.</p>
+            <div class="partners-grid fade-up">
+                <div class="partner-item"><div class="partner-logo"><i class="fas fa-hospital-alt"></i></div><div class="partner-name">Fondation Ophtalmo</div></div>
+                <div class="partner-item"><div class="partner-logo"><i class="fas fa-university"></i></div><div class="partner-name">Université Paris Vision</div></div>
+                <div class="partner-item"><div class="partner-logo"><i class="fas fa-hand-holding-heart"></i></div><div class="partner-name">Voir Demain</div></div>
+                <div class="partner-item"><div class="partner-logo"><i class="fas fa-print"></i></div><div class="partner-name">Braille & Co</div></div>
+                <div class="partner-item"><div class="partner-logo"><i class="fas fa-microscope"></i></div><div class="partner-name">Institut de la Vision</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPEL AUX DONS ─── -->
+    <section class="donation-section" id="don">
+        <div class="container text-center">
+            <h2 class="section-title" style="color:var(--white);">Votre soutien peut changer une vie.</h2>
+            <p>En soutenant la MIADV, vous contribuez à renforcer l'accompagnement, la réadaptation et l'inclusion des personnes déficientes visuelles.</p>
+            <a href="#" class="btn btn-donation" style="background:var(--green-accent);">Faire un don</a>
+        </div>
+    </section>
+
+    <!-- ─── PAGE À PROPOS (approfondi) ─── -->
+    <section class="section about-page" id="a-propos-approfondi">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">À propos de la MIADV</h2>
+                <p class="section-subtitle">Découvrez notre histoire, notre vision et notre équipe.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Notre histoire</h3>
+                    <p>Fondée en 2010 par le Dr. Marc Leblanc et Sophie Delacroix, la MIADV est née d'une conviction : l'accompagnement des personnes déficientes visuelles doit être global, humain et durable.</p>
+                    <h3>Notre vision</h3>
+                    <p>Construire une société où la déficience visuelle n'est pas un frein à l'épanouissement personnel, professionnel et social.</p>
+                    <h3>Notre mission</h3>
+                    <p>Prévenir, soigner, réadapter et inclure, en offrant des services de qualité à chaque étape de la vie.</p>
+                    <h3>Nos valeurs</h3>
+                    <p>Humanité, solidarité, excellence, respect de la dignité et engagement pour l'inclusion.</p>
+                    <h3>Nos objectifs</h3>
+                    <ul style="margin-left:1.5rem; color:var(--gray-muted);">
+                        <li>Faciliter l'accès aux soins et à la réadaptation</li>
+                        <li>Promouvoir l'autonomie et la participation sociale</li>
+                        <li>Sensibiliser le public et les décideurs</li>
+                        <li>Renforcer les partenariats et la recherche</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Notre équipe</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-md"></i></div>
+                            <h4>Dr. Marc Leblanc</h4>
+                            <p>Co-fondateur, Ophtalmologue</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-md"></i></div>
+                            <h4>Sophie Delacroix</h4>
+                            <p>Co-fondatrice, Orthoptiste</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                            <h4>Julie Moreau</h4>
+                            <p>Directrice des programmes</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                            <h4>Thomas Durand</h4>
+                            <p>Responsable des partenariats</p>
+                        </div>
+                    </div>
+                    <h3 style="margin-top:2rem;">Nos partenaires</h3>
+                    <p>Nous travaillons avec de nombreuses organisations, institutions et entreprises pour maximiser notre impact.</p>
+                    <div class="partners-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px,1fr));">
+                        <div class="partner-item"><div class="partner-logo"><i class="fas fa-hospital-alt"></i></div><div class="partner-name">Fondation Ophtalmo</div></div>
+                        <div class="partner-item"><div class="partner-logo"><i class="fas fa-university"></i></div><div class="partner-name">Université Paris Vision</div></div>
+                        <div class="partner-item"><div class="partner-logo"><i class="fas fa-hand-holding-heart"></i></div><div class="partner-name">Voir Demain</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Nous sommes à votre écoute. N'hésitez pas à nous contacter.</p>
+            </div>
+            <div class="contact-grid fade-up">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <p><i class="fas fa-map-pin" style="color:var(--green-accent);margin-right:8px;"></i> <strong>Siège social</strong><br />12 rue de la Vision, 75001 Paris, France</p>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-phone-alt"></i> +33 (0)1 23 45 67 89</li>
+                        <li><i class="fas fa-envelope"></i> contact@miadv.org</li>
+                        <li><i class="fas fa-clock"></i> Lun–Ven : 9h – 18h</li>
+                        <li><i class="fas fa-calendar-check"></i> Permanences : Mardi &amp; Jeudi 14h–17h</li>
+                    </ul>
+                    <div class="footer-social" style="margin-top:1.5rem;">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div style="margin-top:1.5rem; background:var(--light-blue); padding:1rem; border-radius:var(--radius);">
+                        <p><i class="fas fa-map-marked-alt" style="color:var(--green-accent);"></i> Carte interactive (simulée)</p>
+                        <p style="font-size:0.9rem; color:var(--gray-muted);">Métro : Louvre-Rivoli (ligne 1) – Bus : arrêt "Vision"</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 1rem;">
+                        <div>
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" placeholder="Votre nom" required />
+                        </div>
+                        <div>
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="votre@email.fr" required />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" placeholder="+33 ..." />
+                    </div>
+                    <div>
+                        <label for="subject">Sujet *</label>
+                        <input type="text" id="subject" placeholder="Objet de votre message" required />
+                    </div>
+                    <div>
+                        <label for="message">Message *</label>
+                        <textarea id="message" placeholder="Décrivez votre demande…" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%; justify-content:center;">
+                        <i class="fas fa-paper-plane" style="margin-right:10px;"></i> Envoyer le message
+                    </button>
+                    <div id="formFeedback" class="form-feedback" style="margin-top:0.8rem; text-align:center;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER : Informations complètes en bas ─── -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>MIADV</h4>
+                    <p style="font-size:0.9rem; opacity:0.7;">Maison Internationale d'Assistance aux Déficients Visuels</p>
+                    <p style="font-size:0.8rem; margin-top:0.3rem; opacity:0.6;">Prévenir · Soigner · Réadapter · Inclure</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#a-propos">À propos</a></li>
+                        <li><a href="#services">Nos services</a></li>
+                        <li><a href="#actualites">Actualités</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos missions</h4>
+                    <ul>
+                        <li><a href="#missions">Prévenir</a></li>
+                        <li><a href="#missions">Soigner</a></li>
+                        <li><a href="#missions">Réadapter</a></li>
+                        <li><a href="#missions">Inclure</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +33 (0)1 23 45 67 89</li>
+                        <li><i class="fas fa-envelope" style="margin-right:6px;"></i> contact@miadv.org</li>
+                        <li><i class="fas fa-map-pin" style="margin-right:6px;"></i> 12 rue de la Vision, 75001 Paris</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 MIADV — Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        (function() {
+            "use strict";
+
+            // ─── Menu mobile ───
+            const toggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            toggle.addEventListener('click', function() {
+                const open = navLinks.classList.toggle('open');
+                this.setAttribute('aria-expanded', open);
+                this.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            // ─── Header scroll shadow ───
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                header.classList.toggle('scrolled', window.scrollY > 30);
+            });
+
+            // ─── Animations fade-up ───
+            const fadeElements = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+            fadeElements.forEach(function(el) { observer.observe(el); });
+
+            // Forcer l'affichage initial pour ceux déjà visibles
+            setTimeout(function() {
+                fadeElements.forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 300);
+
+            // ─── Statistiques animées ───
+            const counters = document.querySelectorAll('.impact-number');
+            let counted = false;
+
+            function animateCounters() {
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-target'), 10);
+                    var current = 0;
+                    var increment = target / 80;
+                    var update = function() {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.round(current);
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    update();
+                });
+            }
+
+            const impactSection = document.getElementById('impact');
+            const impactObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !counted) {
+                        counted = true;
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.3 });
+            if (impactSection) impactObserver.observe(impactSection);
+
+            // ─── Galerie Lightbox ───
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            galleryItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    var imgSrc = this.getAttribute('data-img');
+                    if (imgSrc) {
+                        lightboxImg.src = imgSrc;
+                        lightbox.classList.add('open');
+                    } else {
+                        lightboxImg.src = 'https://via.placeholder.com/800x800/1a4f7a/ffffff?text=MIADV';
+                        lightbox.classList.add('open');
+                    }
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('open');
+            }
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === this) closeLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // ─── Accessibilité : taille de police ───
+            let currentFontSize = 100;
+            const fontPlus = document.getElementById('fontPlus');
+            const fontMinus = document.getElementById('fontMinus');
+            const contrastToggle = document.getElementById('contrastToggle');
+            const resetAccess = document.getElementById('resetAccess');
+
+            function setFontSize(percent) {
+                document.documentElement.style.fontSize = percent + '%';
+                currentFontSize = percent;
+            }
+
+            fontPlus.addEventListener('click', function() {
+                if (currentFontSize < 150) setFontSize(currentFontSize + 10);
+            });
+            fontMinus.addEventListener('click', function() {
+                if (currentFontSize > 70) setFontSize(currentFontSize - 10);
+            });
+
+            contrastToggle.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+            });
+
+            resetAccess.addEventListener('click', function() {
+                setFontSize(100);
+                document.body.classList.remove('high-contrast');
+            });
+
+            // ─── Formulaire de contact ───
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('formFeedback');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    feedback.textContent = '⚠️ Veuillez remplir tous les champs obligatoires.';
+                    feedback.style.color = '#b22222';
+                    return;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    feedback.textContent = '⚠️ Veuillez entrer une adresse email valide.';
+                    feedback.style.color = '#b22222';
+                    return;
+                }
+
+                feedback.textContent = '✅ Votre message a été envoyé avec succès ! Nous vous répondrons sous 48h.';
+                feedback.style.color = '#1a7a4a';
+                form.reset();
+                setTimeout(function() {
+                    feedback.textContent = '';
+                }, 6000);
+            });
+
+        })();
+    </script>
+</body>
+</html>
