@@ -7,7 +7,7 @@
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ─────────── RESET & VARIABLES ─────────── */
@@ -158,18 +158,41 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO UNIQUEMENT (AGRANDI) ── */
+        /* ── LOGO + TEXTE AGRANDIS ── */
         .logo {
             display: flex;
             align-items: center;
+            gap: 20px;
             text-decoration: none;
             padding: 4px 0;
         }
         .logo img {
-            height: 100px;      /* Taille agrandie pour que le texte intégré soit lisible */
+            height: 140px;          /* TRÈS GRAND pour une lisibilité parfaite */
             width: auto;
             display: block;
             border-radius: 0;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .logo-text .main-title {
+            font-weight: 800;
+            font-size: 1.8rem;       /* Très grand et lisible */
+            color: var(--deep-blue);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            background: rgba(26, 79, 122, 0.04);
+            padding: 2px 12px 2px 8px;
+            border-radius: 6px;
+        }
+        .logo-text .tagline {
+            font-weight: 700;
+            font-size: 1.1rem;       /* Bien visible */
+            color: var(--green-accent);
+            letter-spacing: 0.06em;
+            padding-left: 8px;
         }
 
         /* ── Menu à DROITE ── */
@@ -202,13 +225,12 @@
             background: #1b5e20;
         }
 
-        /* ── BOUTON HAMBURGER AVEC OMBRE ── */
         .mobile-toggle {
             display: none;
             background: rgba(255,255,255,0.9);
             border: 1px solid var(--gray-border);
             border-radius: 10px;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--deep-blue);
             cursor: pointer;
             padding: 0.4rem 0.9rem;
@@ -222,7 +244,19 @@
             transform: translateY(-2px);
         }
 
-        /* ─────────── MENU DÉROULANT SUR MOBILE AVEC OMBRE ─────────── */
+        /* ─────────── MENU DÉROULANT SUR MOBILE ─────────── */
+        @media (max-width: 1024px) {
+            .logo img {
+                height: 100px;
+            }
+            .logo-text .main-title {
+                font-size: 1.3rem;
+            }
+            .logo-text .tagline {
+                font-size: 0.9rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
@@ -250,13 +284,28 @@
                 border-radius: 8px;
             }
             .logo img {
-                height: 80px;   /* Un peu plus petit sur mobile mais reste grand */
+                height: 80px;
+            }
+            .logo-text .main-title {
+                font-size: 1.1rem;
+            }
+            .logo-text .tagline {
+                font-size: 0.8rem;
             }
         }
 
         @media (max-width: 480px) {
             .logo img {
-                height: 70px;
+                height: 65px;
+            }
+            .logo-text .main-title {
+                font-size: 0.9rem;
+            }
+            .logo-text .tagline {
+                font-size: 0.7rem;
+            }
+            .logo {
+                gap: 10px;
             }
         }
 
@@ -1073,14 +1122,17 @@
 </head>
 <body>
 
-    <!-- ─── HEADER : LOGO SEUL (AGRANDI) ─── -->
+    <!-- ─── HEADER : LOGO AGRANDI + TEXTES TRÈS LISIBLES ─── -->
     <header id="header">
         <div class="container nav">
             <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
                 <img src="logo-miadv.png.jpeg" alt="Logo MIADV" />
+                <div class="logo-text">
+                    <span class="main-title">Maison Internationale d'Assistance aux Déficients Visuels</span>
+                    <span class="tagline">Prévenir · Soigner · Réadapter · Inclure</span>
+                </div>
             </a>
 
-            <!-- Menu hamburger avec ombre -->
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
