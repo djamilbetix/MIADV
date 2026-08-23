@@ -18,7 +18,6 @@
         }
 
         :root {
-            /* Couleurs issues du logo et du brief */
             --deep-blue: #0a2a44;
             --royal-blue: #1a4f7a;
             --light-blue: #e6f0fa;
@@ -28,10 +27,7 @@
             --gray-border: #e2e8f0;
             --gray-text: #2d3748;
             --gray-muted: #4a5568;
-            
-            /* Couleur unique pour TOUS les titres */
-            --title-color: #1a4f7a; /* Bleu royal vif */
-
+            --title-color: #1a4f7a;
             --shadow-sm: 0 2px 12px rgba(10, 42, 68, 0.06);
             --shadow-md: 0 8px 30px rgba(10, 42, 68, 0.10);
             --shadow-lg: 0 20px 60px rgba(10, 42, 68, 0.14);
@@ -40,7 +36,6 @@
             --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* Accessibilité : contraste élevé (toggle) */
         body.high-contrast {
             --deep-blue: #000033;
             --royal-blue: #003366;
@@ -89,12 +84,11 @@
         }
 
         /* ─────────── TYPOGRAPHIE ─────────── */
-        /* Application de la couleur unique à TOUS les titres */
         h1, h2, h3, h4 {
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.2;
-            color: var(--title-color); /* Couleur unique et distinctive */
+            color: var(--title-color);
         }
         h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
         h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); }
@@ -230,15 +224,15 @@
             flex-wrap: wrap;
         }
 
-        /* ── Espace réservé au LOGO (à gauche) ── */
+        /* ── LOGO IMAGE (à gauche) ── */
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
             color: var(--deep-blue);
-            background: var(--gray-light); /* Léger fond pour bien marquer la zone */
-            padding: 6px 16px 6px 12px;
+            background: var(--gray-light);
+            padding: 4px 16px 4px 8px;
             border-radius: 60px;
             border: 1px solid var(--gray-border);
             transition: var(--transition);
@@ -247,10 +241,17 @@
             background: var(--white);
             box-shadow: var(--shadow-sm);
         }
+        .logo img {
+            height: 50px;   /* Ajustez selon votre logo */
+            width: auto;
+            display: block;
+            border-radius: 30px;
+        }
         .logo-text {
             font-weight: 700;
             font-size: 1.1rem;
             line-height: 1.2;
+            margin-left: 4px;
         }
         .logo-text span {
             display: block;
@@ -360,15 +361,6 @@
             justify-content: center;
             align-items: center;
         }
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            background: var(--light-blue);
-            aspect-ratio: 4/3;
-            object-fit: cover;
-        }
         .hero-image-placeholder {
             width: 100%;
             aspect-ratio: 4/3;
@@ -393,7 +385,7 @@
             text-align: center;
         }
 
-        /* ─────────── QUI SOMMES-NOUS ? (valeurs) ─────────── */
+        /* ─────────── VALEURS ─────────── */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -428,7 +420,7 @@
             color: var(--gray-muted);
         }
 
-        /* ─────────── NOS MISSIONS ─────────── */
+        /* ─────────── MISSIONS ─────────── */
         .missions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -497,7 +489,7 @@
             color: var(--gray-muted);
         }
 
-        /* ─────────── IMPACT (statistiques) ─────────── */
+        /* ─────────── IMPACT ─────────── */
         .impact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -583,10 +575,10 @@
             background: #1b5e20;
         }
 
-        /* ─────────── ACTUALITÉS ─────────── */
+        /* ─────────── ACTUALITÉS (ÉVÉNEMENTS AMÉLIORÉS) ─────────── */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 1rem;
         }
@@ -597,51 +589,82 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-border);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
         .news-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
         .news-card .news-img {
-            height: 150px;
+            height: 180px;
             background: var(--light-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--royal-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        .news-card .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Badge de catégorie sur l'image */
+        .news-card .news-img .category-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--green-accent);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
         .news-card .news-body {
             padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         .news-card .news-meta {
             font-size: 0.8rem;
             color: var(--gray-muted);
             display: flex;
             gap: 1rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
         .news-card .news-body h4 {
             color: var(--title-color);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
         .news-card .news-body p {
             font-size: 0.95rem;
             color: var(--gray-muted);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            flex: 1;
         }
         .news-card .news-body .btn-small {
+            align-self: flex-start;
             display: inline-block;
-            padding: 0.3rem 1rem;
+            padding: 0.5rem 1.5rem;
             background: var(--deep-blue);
             color: var(--white);
             border-radius: 60px;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
             transition: var(--transition);
         }
         .news-card .news-body .btn-small:hover {
             background: var(--royal-blue);
+            transform: translateX(4px);
         }
 
         /* ─────────── GALERIE ─────────── */
@@ -807,7 +830,7 @@
             opacity: 0.9;
         }
 
-        /* ─────────── À PROPOS (page intégrée) ─────────── */
+        /* ─────────── À PROPOS ─────────── */
         .about-page {
             background: var(--white);
         }
@@ -923,7 +946,7 @@
             font-weight: 500;
         }
 
-        /* ─────────── FOOTER : Informations complètes en bas ─────────── */
+        /* ─────────── FOOTER ─────────── */
         footer {
             background: var(--deep-blue);
             color: rgba(255,255,255,0.8);
@@ -976,7 +999,7 @@
             color: rgba(255,255,255,0.4);
         }
 
-        /* ─────────── ANIMATIONS (fade-up) ─────────── */
+        /* ─────────── ANIMATIONS ─────────── */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -1054,9 +1077,8 @@
                 font-size: 0.8rem;
                 padding: 4px 8px;
             }
-            /* Ajustement du logo sur mobile */
-            .logo {
-                padding: 4px 12px 4px 8px;
+            .logo img {
+                height: 40px;
             }
             .logo-text {
                 font-size: 0.9rem;
@@ -1085,12 +1107,15 @@
             .hero-buttons .btn {
                 text-align: center;
             }
+            .logo img {
+                height: 34px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── BARRE D'ACCESSIBILITÉ FLOTTANTE ─── -->
+    <!-- ─── BARRE D'ACCESSIBILITÉ ─── -->
     <div class="accessibility-bar" role="toolbar" aria-label="Options d'accessibilité">
         <button id="fontPlus" aria-label="Augmenter la taille du texte"><i class="fas fa-plus"></i> A+</button>
         <button id="fontMinus" aria-label="Diminuer la taille du texte"><i class="fas fa-minus"></i> A-</button>
@@ -1098,19 +1123,18 @@
         <button id="resetAccess" aria-label="Réinitialiser les options"><i class="fas fa-undo-alt"></i> Réinitialiser</button>
     </div>
 
-    <!-- ─── HEADER : Logo à gauche / Menu à droite ─── -->
+    <!-- ─── HEADER : LOGO (image) à gauche / Menu à droite ─── -->
     <header id="header">
         <div class="container nav">
-            <!-- ESPACE RÉSERVÉ POUR LE LOGO (à gauche) -->
+            <!-- LOGO AVEC IMAGE -->
             <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
+                <img src="logo-miadv.png" alt="Logo MIADV" />
                 <div class="logo-text">
-                    MIADV
                     <span>Maison Internationale d'Assistance aux Déficients Visuels</span>
                     <span class="logo-tagline">Prévenir · Soigner · Réadapter · Inclure</span>
                 </div>
             </a>
 
-            <!-- MENU À DROITE -->
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1148,7 +1172,7 @@
         </div>
     </section>
 
-    <!-- ─── QUI SOMMES-NOUS ? (valeurs) ─── -->
+    <!-- ─── QUI SOMMES-NOUS ? ─── -->
     <section class="section" id="a-propos">
         <div class="container">
             <div class="text-center">
@@ -1183,7 +1207,7 @@
         </div>
     </section>
 
-    <!-- ─── NOS MISSIONS (détaillées) ─── -->
+    <!-- ─── NOS MISSIONS ─── -->
     <section class="section section-alt" id="missions">
         <div class="container text-center">
             <h2 class="section-title">Nos missions</h2>
@@ -1263,7 +1287,7 @@
         </div>
     </section>
 
-    <!-- ─── NOTRE IMPACT (statistiques) ─── -->
+    <!-- ─── IMPACT ─── -->
     <section class="section section-alt" id="impact">
         <div class="container text-center">
             <h2 class="section-title">Notre impact</h2>
@@ -1292,7 +1316,7 @@
         </div>
     </section>
 
-    <!-- ─── NOS PROGRAMMES ─── -->
+    <!-- ─── PROGRAMMES ─── -->
     <section class="section" id="programmes">
         <div class="container text-center">
             <h2 class="section-title">Nos programmes</h2>
@@ -1329,34 +1353,47 @@
         </div>
     </section>
 
-    <!-- ─── ACTUALITÉS ─── -->
+    <!-- ─── ACTUALITÉS (ÉVÉNEMENTS AMÉLIORÉS) ─── -->
     <section class="section section-alt" id="actualites">
         <div class="container text-center">
             <h2 class="section-title">Actualités</h2>
             <p class="section-subtitle">Suivez nos dernières actions et événements.</p>
             <div class="news-grid fade-up">
+                <!-- Carte 1 -->
                 <div class="news-card">
-                    <div class="news-img"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="news-img">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="category-badge">Événement</span>
+                        <!-- Remplacez par <img src="votre-image.jpg" alt="..."> -->
+                    </div>
                     <div class="news-body">
-                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 12 mai 2025</span><span>Événement</span></div>
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 12 mai 2025</span></div>
                         <h4>Journée de dépistage gratuite</h4>
-                        <p>Plus de 200 personnes ont bénéficié d'un dépistage visuel gratuit.</p>
+                        <p>Plus de 200 personnes ont bénéficié d'un dépistage visuel gratuit dans nos locaux.</p>
                         <a href="#" class="btn-small">Lire la suite</a>
                     </div>
                 </div>
+                <!-- Carte 2 -->
                 <div class="news-card">
-                    <div class="news-img"><i class="fas fa-hands"></i></div>
+                    <div class="news-img">
+                        <i class="fas fa-hands"></i>
+                        <span class="category-badge">Partenariat</span>
+                    </div>
                     <div class="news-body">
-                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 28 avril 2025</span><span>Partenariat</span></div>
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 28 avril 2025</span></div>
                         <h4>Nouveau partenariat avec l'Université</h4>
-                        <p>Un programme de recherche sur l'accessibilité numérique.</p>
+                        <p>Un programme de recherche sur l'accessibilité numérique vient d'être lancé.</p>
                         <a href="#" class="btn-small">Lire la suite</a>
                     </div>
                 </div>
+                <!-- Carte 3 -->
                 <div class="news-card">
-                    <div class="news-img"><i class="fas fa-users"></i></div>
+                    <div class="news-img">
+                        <i class="fas fa-users"></i>
+                        <span class="category-badge">Formation</span>
+                    </div>
                     <div class="news-body">
-                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 10 mars 2025</span><span>Formation</span></div>
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 10 mars 2025</span></div>
                         <h4>Formation des aidants</h4>
                         <p>Une formation pour mieux accompagner les proches déficients visuels.</p>
                         <a href="#" class="btn-small">Lire la suite</a>
@@ -1372,7 +1409,6 @@
             <h2 class="section-title">Galerie</h2>
             <p class="section-subtitle">Retour en images sur nos activités.</p>
             <div class="gallery-grid fade-up" id="galleryGrid">
-                <!-- 6 éléments de galerie (remplacer par des images réelles) -->
                 <div class="gallery-item" data-img="https://via.placeholder.com/600x600/1a4f7a/ffffff?text=MIADV+1"><i class="fas fa-camera"></i></div>
                 <div class="gallery-item" data-img="https://via.placeholder.com/600x600/2e7d32/ffffff?text=MIADV+2"><i class="fas fa-camera"></i></div>
                 <div class="gallery-item" data-img="https://via.placeholder.com/600x600/0a2a44/ffffff?text=MIADV+3"><i class="fas fa-camera"></i></div>
@@ -1441,7 +1477,7 @@
         </div>
     </section>
 
-    <!-- ─── PAGE À PROPOS (approfondi) ─── -->
+    <!-- ─── À PROPOS APPROFONDI ─── -->
     <section class="section about-page" id="a-propos-approfondi">
         <div class="container">
             <div class="text-center">
@@ -1563,7 +1599,7 @@
         </div>
     </section>
 
-    <!-- ─── FOOTER : Informations complètes en bas ─── -->
+    <!-- ─── FOOTER ─── -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1617,7 +1653,7 @@
         (function() {
             "use strict";
 
-            // ─── Menu mobile ───
+            // Menu mobile
             const toggle = document.getElementById('mobileToggle');
             const navLinks = document.getElementById('navLinks');
             toggle.addEventListener('click', function() {
@@ -1633,13 +1669,13 @@
                 });
             });
 
-            // ─── Header scroll shadow ───
+            // Header shadow
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 header.classList.toggle('scrolled', window.scrollY > 30);
             });
 
-            // ─── Animations fade-up ───
+            // Fade-up animations
             const fadeElements = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
@@ -1650,7 +1686,6 @@
             }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
             fadeElements.forEach(function(el) { observer.observe(el); });
 
-            // Forcer l'affichage initial pour ceux déjà visibles
             setTimeout(function() {
                 fadeElements.forEach(function(el) {
                     var rect = el.getBoundingClientRect();
@@ -1660,7 +1695,7 @@
                 });
             }, 300);
 
-            // ─── Statistiques animées ───
+            // Counters animation
             const counters = document.querySelectorAll('.impact-number');
             let counted = false;
 
@@ -1693,7 +1728,7 @@
             }, { threshold: 0.3 });
             if (impactSection) impactObserver.observe(impactSection);
 
-            // ─── Galerie Lightbox ───
+            // Gallery lightbox
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             const lightboxClose = document.getElementById('lightboxClose');
@@ -1723,7 +1758,7 @@
                 if (e.key === 'Escape') closeLightbox();
             });
 
-            // ─── Accessibilité : taille de police ───
+            // Accessibility
             let currentFontSize = 100;
             const fontPlus = document.getElementById('fontPlus');
             const fontMinus = document.getElementById('fontMinus');
@@ -1751,7 +1786,7 @@
                 document.body.classList.remove('high-contrast');
             });
 
-            // ─── Formulaire de contact ───
+            // Contact form
             const form = document.getElementById('contactForm');
             const feedback = document.getElementById('formFeedback');
 
