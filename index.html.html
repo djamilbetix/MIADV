@@ -20,6 +20,7 @@
             --royal-blue: #1a4f7a;
             --light-blue: #e6f0fa;
             --green-accent: #2e7d32;
+            --gold: #c9a84c;
             --white: #ffffff;
             --gray-light: #f7f9fc;
             --gray-border: #e2e8f0;
@@ -165,12 +166,13 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO TRÈS GRAND (250px) ── */
+        /* ── LOGO DÉCALÉ À GAUCHE ── */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             padding: 4px 0;
+            margin-left: -12px; /* Décale le logo vers la gauche */
         }
         .logo img {
             height: 250px;
@@ -232,6 +234,9 @@
             .logo img {
                 height: 180px;
             }
+            .logo {
+                margin-left: -8px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -263,11 +268,17 @@
             .logo img {
                 height: 120px;
             }
+            .logo {
+                margin-left: -4px;
+            }
         }
 
         @media (max-width: 480px) {
             .logo img {
                 height: 100px;
+            }
+            .logo {
+                margin-left: 0;
             }
         }
 
@@ -895,6 +906,12 @@
             justify-content: center;
             font-size: 3rem;
             color: var(--royal-blue);
+            overflow: hidden;
+        }
+        .team-member .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .team-member h4 {
             color: var(--title-color);
@@ -902,6 +919,55 @@
         .team-member p {
             font-size: 0.9rem;
             color: var(--gray-muted);
+        }
+
+        /* ── CARTE EXCEPTIONNELLE POUR DR DIKUIZA ── */
+        .team-member.featured {
+            grid-column: span 2;
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .team-member.featured:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(10, 42, 68, 0.16);
+        }
+        .team-member.featured .avatar {
+            width: 160px;
+            height: 160px;
+            border: 4px solid var(--gold);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+            transition: var(--transition);
+        }
+        .team-member.featured:hover .avatar {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(201, 168, 76, 0.5);
+        }
+        .team-member.featured h4 {
+            font-size: 1.6rem;
+            color: var(--deep-blue);
+            margin-top: 0.5rem;
+        }
+        .team-member.featured p {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .team-member.featured {
+                grid-column: span 1;
+            }
+            .team-member.featured .avatar {
+                width: 130px;
+                height: 130px;
+            }
+            .team-member.featured h4 {
+                font-size: 1.3rem;
+            }
         }
 
         .contact-grid {
@@ -1018,7 +1084,7 @@
             transition: var(--transition);
         }
         .footer-social a:hover {
-            color: #c9a84c;
+            color: var(--gold);
             transform: translateY(-3px);
         }
         .footer-bottom {
@@ -1119,7 +1185,6 @@
     <header id="header">
         <div class="container nav">
             <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
-                <!-- Chemin corrigé : logo-miadv.png (sans .jpeg) + ?v=2 pour forcer le rechargement -->
                 <img src="logo-miadv.png?v=2" alt="Logo MIADV" />
             </a>
 
@@ -1533,11 +1598,15 @@
                 <div>
                     <h3>Notre équipe</h3>
                     <div class="team-grid">
-                        <div class="team-member">
-                            <div class="avatar"><i class="fas fa-user-md"></i></div>
+                        <!-- Carte exceptionnelle pour Dr DIKUIZA avec photo -->
+                        <div class="team-member featured">
+                            <div class="avatar">
+                                <img src="dr-dikuiza.jpg?v=1" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
+                            </div>
                             <h4>Dr. DIKUIZA MAKUBIKUA GLODI</h4>
                             <p>Initiateur, Médecin Ophtalmologue</p>
                         </div>
+
                         <div class="team-member">
                             <div class="avatar"><i class="fas fa-user-md"></i></div>
                             <h4>Dr. Marc Leblanc</h4>
