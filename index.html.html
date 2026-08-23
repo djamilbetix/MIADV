@@ -158,45 +158,18 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO AGRANDI ── */
+        /* ── LOGO UNIQUEMENT (AGRANDI) ── */
         .logo {
             display: flex;
             align-items: center;
-            gap: 14px;
             text-decoration: none;
-            color: var(--deep-blue);
             padding: 4px 0;
-            transition: var(--transition);
         }
         .logo img {
-            height: 80px;
+            height: 100px;      /* Taille agrandie pour que le texte intégré soit lisible */
             width: auto;
             display: block;
             border-radius: 0;
-        }
-        .logo-text {
-            font-weight: 800;
-            font-size: 1.3rem;
-            line-height: 1.2;
-            color: var(--deep-blue);
-            background: rgba(26, 79, 122, 0.06);
-            padding: 4px 12px 4px 8px;
-            border-radius: 8px;
-        }
-        .logo-text span {
-            display: block;
-            font-weight: 600;
-            font-size: 0.7rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--gray-muted);
-        }
-        .logo-tagline {
-            font-size: 0.7rem;
-            color: var(--green-accent);
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            display: block;
         }
 
         /* ── Menu à DROITE ── */
@@ -229,7 +202,7 @@
             background: #1b5e20;
         }
 
-        /* ── BOUTON HAMBURGER AVEC OMBRE PROFESSIONNELLE ── */
+        /* ── BOUTON HAMBURGER AVEC OMBRE ── */
         .mobile-toggle {
             display: none;
             background: rgba(255,255,255,0.9);
@@ -275,6 +248,15 @@
                 text-align: center;
                 padding: 0.7rem 0.6rem;
                 border-radius: 8px;
+            }
+            .logo img {
+                height: 80px;   /* Un peu plus petit sur mobile mais reste grand */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 70px;
             }
         }
 
@@ -1062,13 +1044,6 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .logo img {
-                height: 60px;
-            }
-            .logo-text {
-                font-size: 1rem;
-                padding: 2px 8px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1093,33 +1068,19 @@
             .hero-buttons .btn {
                 text-align: center;
             }
-            .logo img {
-                height: 50px;
-            }
-            .logo-text {
-                font-size: 0.85rem;
-                padding: 2px 6px;
-            }
-            .logo-text span {
-                font-size: 0.55rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── HEADER : LOGO AGRANDI + TEXTE SURlIGNÉ ─── -->
+    <!-- ─── HEADER : LOGO SEUL (AGRANDI) ─── -->
     <header id="header">
         <div class="container nav">
             <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
                 <img src="logo-miadv.png.jpeg" alt="Logo MIADV" />
-                <div class="logo-text">
-                    <span style="font-weight:800; font-size:1.1rem; color:var(--deep-blue);">Maison Internationale d'Assistance aux Déficients Visuels</span>
-                    <span class="logo-tagline">Prévenir · Soigner · Réadapter · Inclure</span>
-                </div>
             </a>
 
-            <!-- Menu hamburger avec OMBRE PROFESSIONNELLE -->
+            <!-- Menu hamburger avec ombre -->
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
