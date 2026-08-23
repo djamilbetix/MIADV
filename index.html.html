@@ -20,7 +20,6 @@
             --royal-blue: #1a4f7a;
             --light-blue: #e6f0fa;
             --green-accent: #2e7d32;
-            --gold: #c9a84c;
             --white: #ffffff;
             --gray-light: #f7f9fc;
             --gray-border: #e2e8f0;
@@ -166,13 +165,13 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO DÉCALÉ À GAUCHE ── */
+        /* ── LOGO DÉCALÉ PLUS À GAUCHE ── */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             padding: 4px 0;
-            margin-left: -12px; /* Décale le logo vers la gauche */
+            margin-left: -24px; /* Décale davantage vers la gauche */
         }
         .logo img {
             height: 250px;
@@ -235,7 +234,7 @@
                 height: 180px;
             }
             .logo {
-                margin-left: -8px;
+                margin-left: -16px;
             }
         }
 
@@ -269,7 +268,7 @@
                 height: 120px;
             }
             .logo {
-                margin-left: -4px;
+                margin-left: -8px;
             }
         }
 
@@ -382,7 +381,7 @@
             font-size: 1.1rem;
         }
 
-        /* ─────────── SECTIONS ─────────── */
+        /* ─────────── SECTIONS COMMUNES ─────────── */
         .section {
             padding: 5rem 0;
         }
@@ -874,6 +873,7 @@
             opacity: 0.9;
         }
 
+        /* ─────────── ABOUT PAGE ─────────── */
         .about-page {
             background: var(--white);
         }
@@ -886,27 +886,52 @@
         .about-page .about-text p {
             margin-bottom: 1rem;
         }
-        .about-page .team-grid {
+
+        /* ─── CARTES MEMBRES : FORMAT CARRÉ (1:1) ─── */
+        .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 1rem;
         }
         .team-member {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
             text-align: center;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+        .team-member:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
         }
         .team-member .avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: var(--light-blue);
-            margin: 0 auto 0.5rem;
+            margin: 0 auto 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--royal-blue);
             overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .team-member:hover .avatar {
+            border-color: var(--green-accent);
+            transform: scale(1.05);
         }
         .team-member .avatar img {
             width: 100%;
@@ -914,46 +939,36 @@
             object-fit: cover;
         }
         .team-member h4 {
-            color: var(--title-color);
+            font-size: 1.05rem;
+            color: var(--deep-blue);
+            margin-bottom: 0.2rem;
+            line-height: 1.2;
         }
         .team-member p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gray-muted);
+            margin: 0;
         }
-
-        /* ── CARTE EXCEPTIONNELLE POUR DR DIKUIZA ── */
+        /* Carte mise en avant pour Dr Dikuiza (plus grande) */
         .team-member.featured {
             grid-column: span 2;
+            aspect-ratio: auto;
+            padding: 2rem;
             background: var(--white);
-            padding: 2rem 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--gray-border);
-            transition: var(--transition);
-        }
-        .team-member.featured:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 64px rgba(10, 42, 68, 0.16);
+            border-left: 6px solid var(--green-accent);
+            box-shadow: var(--shadow-md);
         }
         .team-member.featured .avatar {
             width: 160px;
             height: 160px;
-            border: 4px solid var(--gold);
-            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
-            transition: var(--transition);
-        }
-        .team-member.featured:hover .avatar {
-            transform: scale(1.05);
-            box-shadow: 0 12px 40px rgba(201, 168, 76, 0.5);
+            border-color: var(--deep-blue);
         }
         .team-member.featured h4 {
-            font-size: 1.6rem;
-            color: var(--deep-blue);
-            margin-top: 0.5rem;
+            font-size: 1.4rem;
         }
         .team-member.featured p {
-            font-size: 1.1rem;
-            color: var(--gold);
+            font-size: 1rem;
+            color: var(--green-accent);
             font-weight: 600;
         }
 
@@ -966,10 +981,35 @@
                 height: 130px;
             }
             .team-member.featured h4 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
+            }
+            .team-member .avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.8rem;
+            }
+            .team-member h4 {
+                font-size: 0.95rem;
             }
         }
 
+        @media (max-width: 480px) {
+            .team-member .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
+            }
+            .team-member.featured .avatar {
+                width: 110px;
+                height: 110px;
+            }
+            .team-member {
+                aspect-ratio: auto;
+                padding: 1.2rem;
+            }
+        }
+
+        /* ─── CONTACT ─── */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1043,6 +1083,7 @@
             font-weight: 500;
         }
 
+        /* ─── FOOTER ─── */
         footer {
             background: var(--deep-blue);
             color: rgba(255, 255, 255, 0.8);
@@ -1084,7 +1125,7 @@
             transition: var(--transition);
         }
         .footer-social a:hover {
-            color: var(--gold);
+            color: #c9a84c;
             transform: translateY(-3px);
         }
         .footer-bottom {
@@ -1233,14 +1274,14 @@
                 <h2 class="section-title">Notre histoire</h2>
             </div>
             <div class="histoire-content fade-up">
-                <p>La Maison Internationale d’Assistance aux Déficients Visuels (MIADV) est une initiative du <strong>Dr DIKUIZA MAKUBIKUA GLODI</strong>, médecin prestant dans un service d’ophtalmologie.</p>
-                <p>Au cours de sa pratique médicale, il a été confronté à une réalité particulièrement préoccupante : lorsqu’un patient atteint un stade de cécité irréversible, l’ophtalmologue peut être amené à lui annoncer que les possibilités de récupération visuelle sont épuisées. Mais après cette annonce difficile, que devient le patient ?</p>
+                <p>La Maison Internationale d'Assistance aux Déficients Visuels (MIADV) est une initiative du <strong>Dr DIKUIZA MAKUBIKUA GLODI</strong>, médecin prestant dans un service d'ophtalmologie.</p>
+                <p>Au cours de sa pratique médicale, il a été confronté à une réalité particulièrement préoccupante : lorsqu'un patient atteint un stade de cécité irréversible, l'ophtalmologue peut être amené à lui annoncer que les possibilités de récupération visuelle sont épuisées. Mais après cette annonce difficile, que devient le patient ?</p>
                 <p>Son premier constat a été l'absence fréquente d'un véritable accompagnement après l'annonce de la cécité. Le patient peut quitter le service médical avec son diagnostic, mais sans accompagnement psychologique, sans programme de réadaptation et sans préparation à cette nouvelle vie.</p>
                 <p>Pour certains patients, cette rupture est profonde : détresse psychologique, perte de repères, isolement, irritabilité, dépendance, perte d'autonomie et difficultés de réinsertion familiale, professionnelle et sociale. Dans les situations les plus graves, la souffrance psychologique peut devenir majeure.</p>
                 <p>Un deuxième constat concerne la place de la personne aveugle dans la société. En République démocratique du Congo et dans plusieurs communautés africaines, de nombreuses personnes atteintes de cécité vivent encore dans des conditions de grande précarité. Certaines se retrouvent dans les rues ou les lieux publics, contraintes de recourir à la mendicité pour survivre.</p>
                 <p>Chez l'enfant atteint de cécité, les conséquences peuvent être tout aussi importantes : rupture scolaire, interruption des apprentissages, isolement social et réduction des perspectives d'avenir, alors qu'avec une éducation adaptée, le braille, la réadaptation et les technologies accessibles, cet enfant peut continuer à apprendre et à développer son potentiel.</p>
                 <p>De ces constats est née une conviction : la mission ne doit pas s'arrêter lorsque la médecine ne peut plus restaurer la vision.</p>
-                <p>C'est ainsi que le Dr DIKUIZA MAKUBIKUA GLODI a initié la Maison Internationale d’Assistance aux Déficients Visuels (MIADV), afin de construire une réponse globale destinée aux personnes aveugles et malvoyantes.</p>
+                <p>C'est ainsi que le Dr DIKUIZA MAKUBIKUA GLODI a initié la Maison Internationale d'Assistance aux Déficients Visuels (MIADV), afin de construire une réponse globale destinée aux personnes aveugles et malvoyantes.</p>
                 <p>La MIADV veut assurer une continuité entre la prévention, les soins, l'accompagnement psychologique, la réadaptation et l'inclusion sociale.</p>
                 <p>De cette vision sont nés quatre piliers :</p>
 
@@ -1598,7 +1639,7 @@
                 <div>
                     <h3>Notre équipe</h3>
                     <div class="team-grid">
-                        <!-- Carte exceptionnelle pour Dr DIKUIZA avec photo -->
+                        <!-- Dr Dikuiza – Carte mise en avant -->
                         <div class="team-member featured">
                             <div class="avatar">
                                 <img src="dr-dikuiza.jpg?v=1" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
