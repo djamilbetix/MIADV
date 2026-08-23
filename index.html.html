@@ -158,41 +158,18 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO + TEXTE AGRANDIS ── */
+        /* ── LOGO UNIQUEMENT, TRÈS AGRANDI ── */
         .logo {
             display: flex;
             align-items: center;
-            gap: 20px;
             text-decoration: none;
             padding: 4px 0;
         }
         .logo img {
-            height: 140px;          /* TRÈS GRAND pour une lisibilité parfaite */
+            height: 160px;          /* Taille très grande pour lisibilité */
             width: auto;
             display: block;
             border-radius: 0;
-        }
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .logo-text .main-title {
-            font-weight: 800;
-            font-size: 1.8rem;       /* Très grand et lisible */
-            color: var(--deep-blue);
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            background: rgba(26, 79, 122, 0.04);
-            padding: 2px 12px 2px 8px;
-            border-radius: 6px;
-        }
-        .logo-text .tagline {
-            font-weight: 700;
-            font-size: 1.1rem;       /* Bien visible */
-            color: var(--green-accent);
-            letter-spacing: 0.06em;
-            padding-left: 8px;
         }
 
         /* ── Menu à DROITE ── */
@@ -247,13 +224,7 @@
         /* ─────────── MENU DÉROULANT SUR MOBILE ─────────── */
         @media (max-width: 1024px) {
             .logo img {
-                height: 100px;
-            }
-            .logo-text .main-title {
-                font-size: 1.3rem;
-            }
-            .logo-text .tagline {
-                font-size: 0.9rem;
+                height: 130px;
             }
         }
 
@@ -284,28 +255,13 @@
                 border-radius: 8px;
             }
             .logo img {
-                height: 80px;
-            }
-            .logo-text .main-title {
-                font-size: 1.1rem;
-            }
-            .logo-text .tagline {
-                font-size: 0.8rem;
+                height: 90px;
             }
         }
 
         @media (max-width: 480px) {
             .logo img {
-                height: 65px;
-            }
-            .logo-text .main-title {
-                font-size: 0.9rem;
-            }
-            .logo-text .tagline {
-                font-size: 0.7rem;
-            }
-            .logo {
-                gap: 10px;
+                height: 75px;
             }
         }
 
@@ -372,6 +328,41 @@
             color: var(--royal-blue);
             font-size: 4rem;
             box-shadow: var(--shadow-md);
+        }
+
+        /* ─── SECTION NOTRE HISTOIRE ─── */
+        .histoire-section {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.02);
+        }
+        .histoire-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        .histoire-content p {
+            margin-bottom: 1.2rem;
+        }
+        .histoire-content .pillars-highlight {
+            margin-top: 2rem;
+            padding: 2rem 1.5rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            border-left: 6px solid var(--green-accent);
+            text-align: center;
+        }
+        .histoire-content .pillars-highlight .pillars-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--deep-blue);
+            letter-spacing: 0.04em;
+        }
+        .histoire-content .pillars-highlight .pillars-sub {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: var(--gray-muted);
+            font-size: 1.1rem;
         }
 
         /* ─────────── SECTIONS COMMUNES ─────────── */
@@ -1026,16 +1017,16 @@
         }
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             margin-top: 0.5rem;
         }
         .footer-social a {
-            color: rgba(255,255,255,0.6);
-            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 1.8rem;
             transition: var(--transition);
         }
         .footer-social a:hover {
-            color: var(--white);
+            color: #c9a84c; /* Or pour rappeler le logo */
             transform: translateY(-3px);
         }
         .footer-bottom {
@@ -1093,6 +1084,12 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .footer-social a {
+                font-size: 1.5rem;
+            }
+            .histoire-content .pillars-highlight .pillars-text {
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1117,20 +1114,22 @@
             .hero-buttons .btn {
                 text-align: center;
             }
+            .footer-social a {
+                font-size: 1.3rem;
+            }
+            .histoire-content .pillars-highlight .pillars-text {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── HEADER : LOGO AGRANDI + TEXTES TRÈS LISIBLES ─── -->
+    <!-- ─── HEADER : LOGO SEUL, TRÈS AGRANDI ─── -->
     <header id="header">
         <div class="container nav">
             <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
                 <img src="logo-miadv.png.jpeg" alt="Logo MIADV" />
-                <div class="logo-text">
-                    <span class="main-title">Maison Internationale d'Assistance aux Déficients Visuels</span>
-                    <span class="tagline">Prévenir · Soigner · Réadapter · Inclure</span>
-                </div>
             </a>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal" aria-expanded="false">
@@ -1138,6 +1137,7 @@
             </button>
             <ul class="nav-links" id="navLinks" role="navigation">
                 <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#notre-histoire">Notre histoire</a></li>
                 <li><a href="#a-propos">À propos</a></li>
                 <li><a href="#missions">Nos missions</a></li>
                 <li><a href="#services">Nos services</a></li>
@@ -1165,6 +1165,32 @@
             <div class="hero-image">
                 <div class="hero-image-placeholder" role="img" aria-label="Illustration : inclusion et accompagnement">
                     <i class="fas fa-hands-helping"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOTRE HISTOIRE ─── -->
+    <section class="section histoire-section" id="notre-histoire">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Notre histoire</h2>
+            </div>
+            <div class="histoire-content fade-up">
+                <p>La Maison Internationale d’Assistance aux Déficients Visuels (MIADV) est une initiative du Dr DIKUIZA MAKUBIKUA GLODI, médecin prestant dans un service d’ophtalmologie.</p>
+                <p>Au cours de sa pratique médicale, il a été confronté à une réalité particulièrement préoccupante : lorsqu’un patient atteint un stade de cécité irréversible, l’ophtalmologue peut être amené à lui annoncer que les possibilités de récupération visuelle sont épuisées. Mais après cette annonce difficile, que devient le patient ?</p>
+                <p>Son premier constat a été l'absence fréquente d'un véritable accompagnement après l'annonce de la cécité. Le patient peut quitter le service médical avec son diagnostic, mais sans accompagnement psychologique, sans programme de réadaptation et sans préparation à cette nouvelle vie.</p>
+                <p>Pour certains patients, cette rupture est profonde : détresse psychologique, perte de repères, isolement, irritabilité, dépendance, perte d'autonomie et difficultés de réinsertion familiale, professionnelle et sociale. Dans les situations les plus graves, la souffrance psychologique peut devenir majeure.</p>
+                <p>Un deuxième constat concerne la place de la personne aveugle dans la société. En République démocratique du Congo et dans plusieurs communautés africaines, de nombreuses personnes atteintes de cécité vivent encore dans des conditions de grande précarité. Certaines se retrouvent dans les rues ou les lieux publics, contraintes de recourir à la mendicité pour survivre.</p>
+                <p>Chez l'enfant atteint de cécité, les conséquences peuvent être tout aussi importantes : rupture scolaire, interruption des apprentissages, isolement social et réduction des perspectives d'avenir, alors qu'avec une éducation adaptée, le braille, la réadaptation et les technologies accessibles, cet enfant peut continuer à apprendre et à développer son potentiel.</p>
+                <p>De ces constats est née une conviction : la mission ne doit pas s'arrêter lorsque la médecine ne peut plus restaurer la vision.</p>
+                <p>C'est ainsi que le Dr DIKUIZA MAKUBIKUA GLODI a initié la Maison Internationale d’Assistance aux Déficients Visuels (MIADV), afin de construire une réponse globale destinée aux personnes aveugles et malvoyantes.</p>
+                <p>La MIADV veut assurer une continuité entre la prévention, les soins, l'accompagnement psychologique, la réadaptation et l'inclusion sociale.</p>
+                <p>De cette vision sont nés quatre piliers :</p>
+
+                <div class="pillars-highlight">
+                    <div class="pillars-text">PRÉVENIR • SOIGNER • RÉADAPTER • INCLURE</div>
+                    <div class="pillars-sub">Parce que lorsque la vision ne peut plus être restaurée, l'accompagnement, la dignité, l'autonomie et l'avenir de la personne doivent continuer.</div>
                 </div>
             </div>
         </div>
@@ -1499,8 +1525,6 @@
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <h3>Notre histoire</h3>
-                    <p>Fondée en 2010 par le Dr. Marc Leblanc et Sophie Delacroix, la MIADV est née d'une conviction : l'accompagnement des personnes déficientes visuelles doit être global, humain et durable.</p>
                     <h3>Notre vision</h3>
                     <p>Construire une société où la déficience visuelle n'est pas un frein à l'épanouissement personnel, professionnel et social.</p>
                     <h3>Notre mission</h3>
@@ -1574,6 +1598,7 @@
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                     <div style="margin-top:1.5rem; background:var(--light-blue); padding:1rem; border-radius:var(--radius);">
                         <p><i class="fas fa-map-marked-alt" style="color:var(--green-accent);"></i> Carte interactive (simulée)</p>
@@ -1625,6 +1650,7 @@
                     <h4>Navigation</h4>
                     <ul>
                         <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#notre-histoire">Notre histoire</a></li>
                         <li><a href="#a-propos">À propos</a></li>
                         <li><a href="#services">Nos services</a></li>
                         <li><a href="#evenement">Événement</a></li>
@@ -1653,6 +1679,8 @@
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
