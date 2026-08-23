@@ -165,7 +165,7 @@
             background: #061f33;
         }
 
-        /* ─────────── ACCESSIBILITÉ (floating controls) ─────────── */
+        /* ─────────── ACCESSIBILITÉ ─────────── */
         .accessibility-bar {
             position: fixed;
             bottom: 20px;
@@ -202,7 +202,7 @@
             outline: 3px solid var(--green-accent);
         }
 
-        /* ─────────── HEADER : Logo à gauche, Menu à droite ─────────── */
+        /* ─────────── HEADER ─────────── */
         header {
             position: sticky;
             top: 0;
@@ -224,34 +224,25 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO IMAGE (à gauche) ── */
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
             color: var(--deep-blue);
-            background: var(--gray-light);
-            padding: 4px 16px 4px 8px;
-            border-radius: 60px;
-            border: 1px solid var(--gray-border);
+            padding: 4px 0;
             transition: var(--transition);
         }
-        .logo:hover {
-            background: var(--white);
-            box-shadow: var(--shadow-sm);
-        }
         .logo img {
-            height: 50px;   /* Ajustez selon votre logo */
+            height: 50px;
             width: auto;
             display: block;
-            border-radius: 30px;
+            border-radius: 0;
         }
         .logo-text {
             font-weight: 700;
             font-size: 1.1rem;
             line-height: 1.2;
-            margin-left: 4px;
         }
         .logo-text span {
             display: block;
@@ -269,7 +260,6 @@
             display: block;
         }
 
-        /* ── Menu à DROITE ── */
         .nav-links {
             display: flex;
             list-style: none;
@@ -575,7 +565,56 @@
             background: #1b5e20;
         }
 
-        /* ─────────── ACTUALITÉS (ÉVÉNEMENTS AMÉLIORÉS) ─────────── */
+        /* ─── ÉVÉNEMENT À VENIR (VIDÉO) ─── */
+        .event-video-section {
+            background: var(--gray-light);
+        }
+        .video-card {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .video-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .video-card video {
+            width: 100%;
+            display: block;
+            background: #000;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+        .video-description {
+            padding: 1.8rem 2rem;
+            text-align: left;
+        }
+        .video-description h3 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .video-description p {
+            color: var(--gray-muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+        .video-description .event-date-badge {
+            display: inline-block;
+            background: var(--green-accent);
+            color: var(--white);
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ─────────── ACTUALITÉS ─────────── */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -612,7 +651,6 @@
             height: 100%;
             object-fit: cover;
         }
-        /* Badge de catégorie sur l'image */
         .news-card .news-img .category-badge {
             position: absolute;
             top: 12px;
@@ -698,7 +736,6 @@
             object-fit: cover;
         }
 
-        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -1083,6 +1120,9 @@
             .logo-text {
                 font-size: 0.9rem;
             }
+            .video-description {
+                padding: 1.2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1110,6 +1150,9 @@
             .logo img {
                 height: 34px;
             }
+            .logo-text {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -1123,12 +1166,11 @@
         <button id="resetAccess" aria-label="Réinitialiser les options"><i class="fas fa-undo-alt"></i> Réinitialiser</button>
     </div>
 
-    <!-- ─── HEADER : LOGO (image) à gauche / Menu à droite ─── -->
+    <!-- ─── HEADER ─── -->
     <header id="header">
         <div class="container nav">
-            <!-- LOGO AVEC IMAGE -->
             <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
-                <img src="logo-miadv.png" alt="Logo MIADV" />
+                <img src="logo-miadv.png.jpeg" alt="Logo MIADV" />
                 <div class="logo-text">
                     <span>Maison Internationale d'Assistance aux Déficients Visuels</span>
                     <span class="logo-tagline">Prévenir · Soigner · Réadapter · Inclure</span>
@@ -1144,6 +1186,7 @@
                 <li><a href="#missions">Nos missions</a></li>
                 <li><a href="#services">Nos services</a></li>
                 <li><a href="#programmes">Nos programmes</a></li>
+                <li><a href="#evenement">Événement</a></li>
                 <li><a href="#actualites">Actualités</a></li>
                 <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1166,7 +1209,6 @@
             <div class="hero-image">
                 <div class="hero-image-placeholder" role="img" aria-label="Illustration : inclusion et accompagnement">
                     <i class="fas fa-hands-helping"></i>
-                    <!-- Remplacez par une image réelle : <img src="chemin/vers/image.jpg" alt="..." /> -->
                 </div>
             </div>
         </div>
@@ -1353,18 +1395,35 @@
         </div>
     </section>
 
-    <!-- ─── ACTUALITÉS (ÉVÉNEMENTS AMÉLIORÉS) ─── -->
+    <!-- ─── ÉVÉNEMENT À VENIR (VIDÉO) ─── -->
+    <section class="section event-video-section" id="evenement">
+        <div class="container text-center">
+            <h2 class="section-title">Événement à venir</h2>
+            <p class="section-subtitle">Découvrez en avant-première notre grand événement de septembre 2026.</p>
+            <div class="video-card fade-up">
+                <video autoplay muted playsinline loop controls poster="poster-event.jpg">
+                    <source src="evenement-miadv-septembre-2026.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéo.
+                </video>
+                <div class="video-description">
+                    <span class="event-date-badge"><i class="far fa-calendar-alt" style="margin-right:6px;"></i> Septembre 2026</span>
+                    <h3>Grande soirée de l'inclusion</h3>
+                    <p>Une soirée exceptionnelle pour célébrer l'autonomie, la solidarité et l'engagement. Rejoignez-nous pour cet événement unique autour de la déficience visuelle. La vidéo est en lecture automatique sans son. Cliquez sur l'icône du haut-parleur pour activer le son.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ACTUALITÉS ─── -->
     <section class="section section-alt" id="actualites">
         <div class="container text-center">
             <h2 class="section-title">Actualités</h2>
             <p class="section-subtitle">Suivez nos dernières actions et événements.</p>
             <div class="news-grid fade-up">
-                <!-- Carte 1 -->
                 <div class="news-card">
                     <div class="news-img">
                         <i class="fas fa-calendar-alt"></i>
                         <span class="category-badge">Événement</span>
-                        <!-- Remplacez par <img src="votre-image.jpg" alt="..."> -->
                     </div>
                     <div class="news-body">
                         <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 12 mai 2025</span></div>
@@ -1373,7 +1432,6 @@
                         <a href="#" class="btn-small">Lire la suite</a>
                     </div>
                 </div>
-                <!-- Carte 2 -->
                 <div class="news-card">
                     <div class="news-img">
                         <i class="fas fa-hands"></i>
@@ -1386,7 +1444,6 @@
                         <a href="#" class="btn-small">Lire la suite</a>
                     </div>
                 </div>
-                <!-- Carte 3 -->
                 <div class="news-card">
                     <div class="news-img">
                         <i class="fas fa-users"></i>
@@ -1614,6 +1671,7 @@
                         <li><a href="#accueil">Accueil</a></li>
                         <li><a href="#a-propos">À propos</a></li>
                         <li><a href="#services">Nos services</a></li>
+                        <li><a href="#evenement">Événement</a></li>
                         <li><a href="#actualites">Actualités</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1653,7 +1711,6 @@
         (function() {
             "use strict";
 
-            // Menu mobile
             const toggle = document.getElementById('mobileToggle');
             const navLinks = document.getElementById('navLinks');
             toggle.addEventListener('click', function() {
@@ -1669,13 +1726,11 @@
                 });
             });
 
-            // Header shadow
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 header.classList.toggle('scrolled', window.scrollY > 30);
             });
 
-            // Fade-up animations
             const fadeElements = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
@@ -1695,7 +1750,6 @@
                 });
             }, 300);
 
-            // Counters animation
             const counters = document.querySelectorAll('.impact-number');
             let counted = false;
 
@@ -1728,7 +1782,6 @@
             }, { threshold: 0.3 });
             if (impactSection) impactObserver.observe(impactSection);
 
-            // Gallery lightbox
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             const lightboxClose = document.getElementById('lightboxClose');
@@ -1758,7 +1811,6 @@
                 if (e.key === 'Escape') closeLightbox();
             });
 
-            // Accessibility
             let currentFontSize = 100;
             const fontPlus = document.getElementById('fontPlus');
             const fontMinus = document.getElementById('fontMinus');
@@ -1786,7 +1838,6 @@
                 document.body.classList.remove('high-contrast');
             });
 
-            // Contact form
             const form = document.getElementById('contactForm');
             const feedback = document.getElementById('formFeedback');
 
