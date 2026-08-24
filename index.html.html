@@ -143,7 +143,7 @@
             background: #061f33;
         }
 
-        /* ─── HEADER ─── */
+        /* ─── HEADER (BARRE RÉDUITE) ─── */
         header {
             position: sticky;
             top: 0;
@@ -151,7 +151,8 @@
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-            padding: 0.5rem 0;
+            padding: 0.2rem 0;
+            /* Barre plus fine */
             transition: box-shadow 0.3s;
         }
         header.scrolled {
@@ -165,12 +166,14 @@
             flex-wrap: wrap;
         }
 
+        /* ── LOGO DÉCALÉ ENCORE PLUS À GAUCHE ── */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-            padding: 4px 0;
-            margin-left: -24px;
+            padding: 2px 0;
+            margin-left: -40px;
+            /* Décalage plus prononcé */
         }
         .logo img {
             height: 250px;
@@ -217,7 +220,7 @@
             font-size: 2rem;
             color: var(--deep-blue);
             cursor: pointer;
-            padding: 0.4rem 0.9rem;
+            padding: 0.3rem 0.7rem;
             margin-left: auto;
             box-shadow: 0 4px 16px rgba(10, 42, 68, 0.08);
             transition: var(--transition);
@@ -233,7 +236,7 @@
                 height: 180px;
             }
             .logo {
-                margin-left: -16px;
+                margin-left: -24px;
             }
         }
 
@@ -267,7 +270,7 @@
                 height: 120px;
             }
             .logo {
-                margin-left: -8px;
+                margin-left: -12px;
             }
         }
 
@@ -277,6 +280,9 @@
             }
             .logo {
                 margin-left: 0;
+            }
+            header {
+                padding: 0.1rem 0;
             }
         }
 
@@ -824,7 +830,7 @@
 
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
             align-items: center;
             margin-top: 1rem;
@@ -846,11 +852,24 @@
             font-size: 2.8rem;
             color: var(--royal-blue);
             opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+        .partner-item .partner-logo img {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
         }
         .partner-item .partner-name {
             font-weight: 600;
             color: var(--deep-blue);
             margin-top: 0.3rem;
+        }
+        .partner-item .partner-desc {
+            font-size: 0.8rem;
+            color: var(--gray-muted);
         }
 
         /* ─── STRUCTURES D'APPUI (MIBATELA) ─── */
@@ -919,9 +938,9 @@
             justify-content: center;
             gap: 10px;
         }
-        .appui-video .appui-logo-placeholder i {
-            font-size: 2rem;
-            color: var(--green-accent);
+        .appui-video .appui-logo-placeholder img {
+            max-height: 40px;
+            width: auto;
         }
 
         @media (max-width: 768px) {
@@ -1030,30 +1049,37 @@
             margin: 0;
         }
 
-        /* Carte Dr Dikuiza : Agrandie, cadre professionnel */
+        /* ─── CARTE DR DIKUIZA : RECTANGLE AGRANDI ─── */
         .team-member.featured {
             grid-column: span 2;
             aspect-ratio: auto;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             background: var(--white);
             border-left: 6px solid var(--green-accent);
             box-shadow: var(--shadow-md);
         }
         .team-member.featured .avatar {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            /* Plus grand */
+            height: 250px;
+            border-radius: 16px;
+            /* Rectangle arrondi */
             border: 4px solid var(--deep-blue);
             box-shadow: 0 8px 30px rgba(10, 42, 68, 0.15);
             transition: var(--transition);
+            background: var(--light-blue);
         }
         .team-member.featured:hover .avatar {
             transform: scale(1.04);
             box-shadow: 0 12px 40px rgba(10, 42, 68, 0.25);
         }
+        .team-member.featured .avatar img {
+            border-radius: 12px;
+        }
         .team-member.featured h4 {
             font-size: 1.5rem;
             color: var(--deep-blue);
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
         }
         .team-member.featured p {
             font-size: 1.05rem;
@@ -1066,8 +1092,8 @@
                 grid-column: span 1;
             }
             .team-member.featured .avatar {
-                width: 150px;
-                height: 150px;
+                width: 200px;
+                height: 200px;
             }
             .team-member.featured h4 {
                 font-size: 1.2rem;
@@ -1089,8 +1115,9 @@
                 font-size: 2.2rem;
             }
             .team-member.featured .avatar {
-                width: 120px;
-                height: 120px;
+                width: 160px;
+                height: 160px;
+                border-radius: 12px;
             }
             .team-member {
                 aspect-ratio: auto;
@@ -1210,6 +1237,7 @@
             display: flex;
             gap: 1.2rem;
             margin-top: 0.5rem;
+            flex-wrap: wrap;
         }
         .footer-social a {
             color: rgba(255, 255, 255, 0.7);
@@ -1567,7 +1595,7 @@
         </div>
     </section>
 
-    <!-- ─── ÉVÉNEMENT À VENIR (VIDÉO) ─── -->
+    <!-- ─── ÉVÉNEMENT À VENIR ─── -->
     <section class="section event-video-section" id="evenement">
         <div class="container text-center">
             <h2 class="section-title">Événement à venir</h2>
@@ -1578,9 +1606,12 @@
                     Votre navigateur ne supporte pas la lecture de vidéo.
                 </video>
                 <div class="video-description">
-                    <span class="event-date-badge"><i class="far fa-calendar-alt" style="margin-right:6px;"></i> Septembre 2026</span>
-                    <h3>Grande soirée de l'inclusion</h3>
-                    <p>Une soirée exceptionnelle pour célébrer l'autonomie, la solidarité et l'engagement. Rejoignez-nous pour cet événement unique autour de la déficience visuelle. La vidéo est en lecture automatique sans son. Cliquez sur l'icône du haut-parleur pour activer le son.</p>
+                    <span class="event-date-badge"><i class="far fa-calendar-alt" style="margin-right:6px;"></i> 21 septembre 2026</span>
+                    <h3>Lancement officiel de la CISAV – Sunga Aveugle na 2$</h3>
+                    <p>Le 21 septembre 2026, la MIADV procédera au lancement officiel de la Cagnotte Internationale de Solidarité Sunga Aveugle (CISAV), sous le concept : <strong>« SUNGA AVEUGLE NA 2$ »</strong>.</p>
+                    <p>La CISAV est un mécanisme permanent de mobilisation et de solidarité, fondé sur une contribution minimale de 2 USD, accessible à toute personne souhaitant soutenir la cause des personnes aveugles et malvoyantes.</p>
+                    <p>Les ressources mobilisées contribueront au financement des actions de la MIADV dans les domaines de la prévention, des soins, de l'assistance, de la réadaptation et de l'inclusion.</p>
+                    <p>L'événement du 21 septembre 2026 marquera le lancement d'une initiative appelée à se poursuivre dans le temps et à fédérer progressivement citoyens, communautés, institutions et partenaires autour d'un même engagement : <strong>Faire de la solidarité une force durable au service des personnes déficientes visuelles.</strong></p>
                 </div>
             </div>
         </div>
@@ -1688,11 +1719,33 @@
             <h2 class="section-title">Nos partenaires</h2>
             <p class="section-subtitle">Des acteurs engagés à nos côtés.</p>
             <div class="partners-grid fade-up">
-                <div class="partner-item"><div class="partner-logo"><i class="fas fa-hospital-alt"></i></div><div class="partner-name">Fondation Ophtalmo</div></div>
-                <div class="partner-item"><div class="partner-logo"><i class="fas fa-university"></i></div><div class="partner-name">Université Paris Vision</div></div>
-                <div class="partner-item"><div class="partner-logo"><i class="fas fa-hand-holding-heart"></i></div><div class="partner-name">Voir Demain</div></div>
-                <div class="partner-item"><div class="partner-logo"><i class="fas fa-print"></i></div><div class="partner-name">Braille & Co</div></div>
-                <div class="partner-item"><div class="partner-logo"><i class="fas fa-microscope"></i></div><div class="partner-name">Institut de la Vision</div></div>
+                <div class="partner-item">
+                    <div class="partner-logo">
+                        <img src="logo-mibatela.png" alt="MIBATELA OPTIQUE" />
+                    </div>
+                    <div class="partner-name">MIBATELA OPTIQUE</div>
+                    <div class="partner-desc">Structure médicale d'appui</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-university"></i></div>
+                    <div class="partner-name">Université Paris Vision</div>
+                    <div class="partner-desc">Formation &amp; études cliniques</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="partner-name">Voir Demain</div>
+                    <div class="partner-desc">Accompagnement social</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-print"></i></div>
+                    <div class="partner-name">Braille & Co</div>
+                    <div class="partner-desc">Impression braille</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-microscope"></i></div>
+                    <div class="partner-name">Institut de la Vision</div>
+                    <div class="partner-desc">Recherche &amp; innovation</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1722,7 +1775,8 @@
                         Votre navigateur ne supporte pas la lecture de vidéo.
                     </video>
                     <div class="appui-logo-placeholder">
-                        <i class="fas fa-eye"></i> MIBATELA OPTIQUE
+                        <img src="logo-mibatela.png" alt="MIBATELA OPTIQUE" style="max-height: 40px;" />
+                        MIBATELA OPTIQUE
                     </div>
                 </div>
             </div>
@@ -1754,17 +1808,23 @@
                     <h3>Nos valeurs</h3>
                     <p>Humanité, solidarité, excellence, respect de la dignité et engagement pour l'inclusion.</p>
                     <h3>Nos objectifs</h3>
-                    <ul style="margin-left:1.5rem; color:var(--gray-muted);">
-                        <li>Faciliter l'accès aux soins et à la réadaptation</li>
-                        <li>Promouvoir l'autonomie et la participation sociale</li>
-                        <li>Sensibiliser le public et les décideurs</li>
-                        <li>Renforcer les partenariats et la recherche</li>
+                    <ul style="margin-left:1.5rem; color:var(--gray-muted); list-style-type: disc; padding-left: 0.5rem;">
+                        <li>Prévenir les déficiences visuelles évitables ;</li>
+                        <li>Faciliter l’accès aux soins oculaires ;</li>
+                        <li>Accompagner médicalement, psychologiquement et socialement les personnes déficientes visuelles ;</li>
+                        <li>Développer la réadaptation et l’autonomie ;</li>
+                        <li>Promouvoir le braille et les technologies accessibles ;</li>
+                        <li>Favoriser l’éducation et la formation professionnelle ;</li>
+                        <li>Soutenir l’insertion professionnelle et l’entrepreneuriat ;</li>
+                        <li>Lutter contre la précarité et l’exclusion ;</li>
+                        <li>Promouvoir l’inclusion sociale ;</li>
+                        <li>Mobiliser la solidarité nationale et internationale.</li>
                     </ul>
                 </div>
                 <div>
                     <h3>Notre équipe</h3>
                     <div class="team-grid">
-                        <!-- Carte Dr Dikuiza agrandie avec cadre professionnel -->
+                        <!-- Carte Dr Dikuiza : rectangle agrandi -->
                         <div class="team-member featured">
                             <div class="avatar">
                                 <img src="dr-dikuiza.jpg?v=2" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
@@ -1831,6 +1891,7 @@
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     <div style="margin-top:1.5rem; background:var(--light-blue); padding:1rem; border-radius:var(--radius);">
                         <p><i class="fas fa-map-marked-alt" style="color:var(--green-accent);"></i> Carte interactive (simulée)</p>
@@ -1914,6 +1975,7 @@
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
