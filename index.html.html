@@ -165,13 +165,12 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO DÉCALÉ PLUS À GAUCHE ── */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             padding: 4px 0;
-            margin-left: -24px; /* Décale davantage vers la gauche */
+            margin-left: -24px;
         }
         .logo img {
             height: 250px;
@@ -854,6 +853,88 @@
             margin-top: 0.3rem;
         }
 
+        /* ─── STRUCTURES D'APPUI (MIBATELA) ─── */
+        .appui-section {
+            background: var(--gray-light);
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .appui-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+        .appui-content h3 {
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+        }
+        .appui-content .appui-subtitle {
+            font-weight: 600;
+            color: var(--green-accent);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .appui-content p {
+            margin-bottom: 1rem;
+            color: var(--gray-text);
+        }
+        .appui-content .pillars-inline {
+            font-weight: 800;
+            color: var(--deep-blue);
+            font-size: 1.2rem;
+            letter-spacing: 0.04em;
+            margin-top: 0.5rem;
+            padding: 0.8rem 1rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .appui-video {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-border);
+        }
+        .appui-video video {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            background: #000;
+        }
+        .appui-video .appui-logo-placeholder {
+            padding: 1rem;
+            text-align: center;
+            background: var(--white);
+            border-top: 1px solid var(--gray-border);
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .appui-video .appui-logo-placeholder i {
+            font-size: 2rem;
+            color: var(--green-accent);
+        }
+
+        @media (max-width: 768px) {
+            .appui-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .appui-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ─── DONATION ─── */
         .donation-section {
             background: var(--deep-blue);
             color: var(--white);
@@ -887,7 +968,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ─── CARTES MEMBRES : FORMAT CARRÉ (1:1) ─── */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -949,7 +1029,8 @@
             color: var(--gray-muted);
             margin: 0;
         }
-        /* Carte mise en avant pour Dr Dikuiza (plus grande) */
+
+        /* Carte Dr Dikuiza : Agrandie, cadre professionnel */
         .team-member.featured {
             grid-column: span 2;
             aspect-ratio: auto;
@@ -959,15 +1040,23 @@
             box-shadow: var(--shadow-md);
         }
         .team-member.featured .avatar {
-            width: 160px;
-            height: 160px;
-            border-color: var(--deep-blue);
+            width: 200px;
+            height: 200px;
+            border: 4px solid var(--deep-blue);
+            box-shadow: 0 8px 30px rgba(10, 42, 68, 0.15);
+            transition: var(--transition);
+        }
+        .team-member.featured:hover .avatar {
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(10, 42, 68, 0.25);
         }
         .team-member.featured h4 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            margin-top: 0.5rem;
         }
         .team-member.featured p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--green-accent);
             font-weight: 600;
         }
@@ -977,8 +1066,8 @@
                 grid-column: span 1;
             }
             .team-member.featured .avatar {
-                width: 130px;
-                height: 130px;
+                width: 150px;
+                height: 150px;
             }
             .team-member.featured h4 {
                 font-size: 1.2rem;
@@ -1000,12 +1089,15 @@
                 font-size: 2.2rem;
             }
             .team-member.featured .avatar {
-                width: 110px;
-                height: 110px;
+                width: 120px;
+                height: 120px;
             }
             .team-member {
                 aspect-ratio: auto;
                 padding: 1.2rem;
+            }
+            .team-member.featured h4 {
+                font-size: 1.1rem;
             }
         }
 
@@ -1242,6 +1334,7 @@
                 <li><a href="#evenement">Événement</a></li>
                 <li><a href="#actualites">Actualités</a></li>
                 <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#structures-appui">Structures d'appui</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#don" class="btn-nav">Faire un don</a></li>
             </ul>
@@ -1604,6 +1697,38 @@
         </div>
     </section>
 
+    <!-- ─── STRUCTURES D'APPUI : MIBATELA OPTIQUE ─── -->
+    <section class="section appui-section" id="structures-appui">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Nos structures d'appui</h2>
+                <p class="section-subtitle">Des partenaires techniques et médicaux au service de la vision.</p>
+            </div>
+            <div class="appui-grid fade-up">
+                <div class="appui-content">
+                    <h3>MIBATELA OPTIQUE</h3>
+                    <div class="appui-subtitle">Structure médicale d'appui de la MIADV</div>
+                    <p>La prise en charge de la déficience visuelle commence par deux actions essentielles : prévenir les maladies oculaires et assurer l'accès aux soins lorsqu'elles surviennent.</p>
+                    <p>C'est dans cette perspective que MIBATELA OPTIQUE accompagne la Maison Internationale d'Assistance aux Déficients Visuels (MIADV) en qualité de structure médicale et technique d'appui, spécifiquement dans les domaines de la <strong>PRÉVENTION</strong> et des <strong>SOINS</strong>.</p>
+                    <p>À travers son expertise en santé visuelle, MIBATELA OPTIQUE contribue notamment à la sensibilisation, au dépistage précoce des affections oculaires, aux consultations ophtalmologiques, aux examens diagnostiques, à la correction des troubles visuels, au traitement et à l'orientation des patients nécessitant une prise en charge spécialisée.</p>
+                    <p>Cette collaboration part d'une réalité simple : préserver la vision, c'est aussi préserver l'autonomie, les capacités et les perspectives d'avenir d'une personne.</p>
+                    <p>Dans cette complémentarité, MIBATELA OPTIQUE intervient sur les deux premiers piliers de la MIADV : <strong>PRÉVENIR</strong> et <strong>SOIGNER</strong>. La MIADV poursuit sa mission globale à travers ses quatre piliers :</p>
+                    <div class="pillars-inline">PRÉVENIR – SOIGNER – RÉADAPTER – INCLURE</div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem; font-style: italic; color: var(--gray-muted);">Ainsi, MIBATELA OPTIQUE constitue un appui médical et technique à la mission de la MIADV, tout en conservant son identité et son fonctionnement propres.</p>
+                </div>
+                <div class="appui-video">
+                    <video controls poster="mibatela-poster.jpg">
+                        <source src="mibatela-video.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéo.
+                    </video>
+                    <div class="appui-logo-placeholder">
+                        <i class="fas fa-eye"></i> MIBATELA OPTIQUE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ─── APPEL AUX DONS ─── -->
     <section class="donation-section" id="don">
         <div class="container text-center">
@@ -1639,10 +1764,10 @@
                 <div>
                     <h3>Notre équipe</h3>
                     <div class="team-grid">
-                        <!-- Dr Dikuiza – Carte mise en avant -->
+                        <!-- Carte Dr Dikuiza agrandie avec cadre professionnel -->
                         <div class="team-member featured">
                             <div class="avatar">
-                                <img src="dr-dikuiza.jpg?v=1" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
+                                <img src="dr-dikuiza.jpg?v=2" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
                             </div>
                             <h4>Dr. DIKUIZA MAKUBIKUA GLODI</h4>
                             <p>Initiateur, Médecin Ophtalmologue</p>
@@ -1691,9 +1816,10 @@
             <div class="contact-grid fade-up">
                 <div class="contact-info">
                     <h3>Nos coordonnées</h3>
-                    <p><i class="fas fa-map-pin" style="color:var(--green-accent);margin-right:8px;"></i> <strong>Siège social</strong><br />12 rue de la Vision, 75001 Paris, France</p>
+                    <p><i class="fas fa-map-pin" style="color:var(--green-accent);margin-right:8px;"></i> <strong>Siège social</strong><br />19bis KAPELA, YOLO-SUD, KALAMU, KINSHASA - RÉPUBLIQUE DÉMOCRATIQUE DU CONGO</p>
                     <ul class="contact-details">
-                        <li><i class="fas fa-phone-alt"></i> +33 (0)1 23 45 67 89</li>
+                        <li><i class="fas fa-phone-alt"></i> +243 860 094 836</li>
+                        <li><i class="fas fa-phone-alt"></i> +243 897 470 502</li>
                         <li><i class="fas fa-envelope"></i> contact@miadv.org</li>
                         <li><i class="fas fa-clock"></i> Lun–Ven : 9h – 18h</li>
                         <li><i class="fas fa-calendar-check"></i> Permanences : Mardi &amp; Jeudi 14h–17h</li>
@@ -1708,7 +1834,6 @@
                     </div>
                     <div style="margin-top:1.5rem; background:var(--light-blue); padding:1rem; border-radius:var(--radius);">
                         <p><i class="fas fa-map-marked-alt" style="color:var(--green-accent);"></i> Carte interactive (simulée)</p>
-                        <p style="font-size:0.9rem; color:var(--gray-muted);">Métro : Louvre-Rivoli (ligne 1) – Bus : arrêt "Vision"</p>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm" novalidate>
@@ -1724,7 +1849,7 @@
                     </div>
                     <div>
                         <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" placeholder="+33 ..." />
+                        <input type="tel" id="phone" placeholder="+243 ..." />
                     </div>
                     <div>
                         <label for="subject">Sujet *</label>
@@ -1761,6 +1886,7 @@
                         <li><a href="#services">Nos services</a></li>
                         <li><a href="#evenement">Événement</a></li>
                         <li><a href="#actualites">Actualités</a></li>
+                        <li><a href="#structures-appui">Structures d'appui</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1776,9 +1902,10 @@
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +33 (0)1 23 45 67 89</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +243 860 094 836</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +243 897 470 502</li>
                         <li><i class="fas fa-envelope" style="margin-right:6px;"></i> contact@miadv.org</li>
-                        <li><i class="fas fa-map-pin" style="margin-right:6px;"></i> 12 rue de la Vision, 75001 Paris</li>
+                        <li><i class="fas fa-map-pin" style="margin-right:6px;"></i> Kinshasa, RDC</li>
                     </ul>
                     <div class="footer-social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
