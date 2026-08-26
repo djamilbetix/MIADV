@@ -9,6 +9,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        /* ─────────── PRELOADER ─────────── */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #preloader .loader-logo {
+            max-height: 140px;
+            width: auto;
+            margin-bottom: 30px;
+            animation: pulse-logo 1.6s ease-in-out infinite;
+        }
+        #preloader .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #c9a84c;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        #preloader .loader-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse-logo {
+            0% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.04); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.85; }
+        }
+
+        /* ─────────── RESET & VARIABLES ─────────── */
         * {
             margin: 0;
             padding: 0;
@@ -1414,6 +1466,13 @@
 </head>
 <body>
 
+    <!-- ─── PRELOADER : ÉCRAN DE CHARGEMENT ─── -->
+    <div id="preloader">
+        <img src="logo-miadv.png?v=2" alt="MIADV" class="loader-logo" />
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Chargement...</div>
+    </div>
+
     <!-- ─── HEADER ─── -->
     <header id="header">
         <div class="container nav">
@@ -2093,7 +2152,15 @@
         (function() {
             "use strict";
 
-            // Menu mobile
+            // ─── PRELOADER ───
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    preloader.classList.add('hidden');
+                }, 700); // Le préloader reste visible 700ms après le chargement complet
+            });
+
+            // ─── Menu mobile ───
             const toggle = document.getElementById('mobileToggle');
             const navLinks = document.getElementById('navLinks');
             toggle.addEventListener('click', function() {
@@ -2109,13 +2176,13 @@
                 });
             });
 
-            // Header shadow on scroll
+            // ─── Header shadow on scroll ───
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 header.classList.toggle('scrolled', window.scrollY > 30);
             });
 
-            // Fade-up animations
+            // ─── Fade-up animations ───
             const fadeElements = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
@@ -2135,7 +2202,7 @@
                 });
             }, 300);
 
-            // Animated counters
+            // ─── Animated counters ───
             const counters = document.querySelectorAll('.impact-number');
             let counted = false;
 
@@ -2168,7 +2235,7 @@
             }, { threshold: 0.3 });
             if (impactSection) impactObserver.observe(impactSection);
 
-            // Gallery Lightbox
+            // ─── Gallery Lightbox ───
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             const lightboxClose = document.getElementById('lightboxClose');
@@ -2198,7 +2265,7 @@
                 if (e.key === 'Escape') closeLightbox();
             });
 
-            // Contact form
+            // ─── Contact form ───
             const form = document.getElementById('contactForm');
             const feedback = document.getElementById('formFeedback');
 
