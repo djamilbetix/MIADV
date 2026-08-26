@@ -919,9 +919,9 @@
         .appui-video video {
             width: 100%;
             display: block;
+            background: #000;
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            background: #000;
         }
         .appui-video .appui-logo-placeholder {
             padding: 1rem;
@@ -1023,8 +1023,31 @@
             gap: 3rem;
             align-items: start;
         }
+        .about-page .about-text {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        /* Réduction des interlignes dans la section À propos */
+        .about-page .about-text h3 {
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+        }
+        .about-page .about-text h3:first-of-type {
+            margin-top: 0;
+        }
         .about-page .about-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+        .about-page .about-text ul {
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+        .about-page .about-text ul li {
+            margin-bottom: 0.2rem;
         }
 
         .team-grid {
@@ -1848,7 +1871,8 @@
                     <p style="margin-top: 1rem; font-size: 0.95rem; font-style: italic; color: var(--gray-muted);">Ainsi, MIBATELA OPTIQUE constitue un appui médical et technique à la mission de la MIADV, tout en conservant son identité et son fonctionnement propres.</p>
                 </div>
                 <div class="appui-video">
-                    <video controls poster="mibatela-poster.jpg">
+                    <!-- Vidéo Mibatela en lecture automatique comme celle de l'événement -->
+                    <video autoplay muted playsinline loop controls poster="mibatela-poster.jpg">
                         <source src="mibatela-video.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéo.
                     </video>
@@ -1881,12 +1905,15 @@
                 <div class="about-text">
                     <h3>Notre vision</h3>
                     <p>Construire une société où la déficience visuelle n'est pas un frein à l'épanouissement personnel, professionnel et social, en <strong>République démocratique du Congo (RDC) et dans le monde</strong>.</p>
+
                     <h3>Notre mission</h3>
                     <p>Prévenir, soigner, réadapter et inclure, en offrant des services de qualité à chaque étape de la vie.</p>
+
                     <h3>Nos valeurs</h3>
                     <p>Humanité, solidarité, excellence, respect de la dignité et engagement pour l'inclusion.</p>
+
                     <h3>Nos objectifs</h3>
-                    <ul style="margin-left:1.5rem; color:var(--gray-muted); list-style-type: disc; padding-left: 0.5rem;">
+                    <ul>
                         <li>Prévenir les déficiences visuelles évitables ;</li>
                         <li>Faciliter l’accès aux soins oculaires ;</li>
                         <li>Accompagner médicalement, psychologiquement et socialement les personnes déficientes visuelles ;</li>
