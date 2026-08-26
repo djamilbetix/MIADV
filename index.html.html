@@ -29,11 +29,11 @@
             visibility: hidden;
             pointer-events: none;
         }
-        #preloader .loader-logo {
-            max-height: 140px;
-            width: auto;
+        #preloader .loader-icon {
+            font-size: 4.5rem;
+            color: #c9a84c;
             margin-bottom: 30px;
-            animation: pulse-logo 1.6s ease-in-out infinite;
+            animation: pulse-icon 1.6s ease-in-out infinite;
         }
         #preloader .loader-spinner {
             width: 60px;
@@ -54,10 +54,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @keyframes pulse-logo {
-            0% { transform: scale(1); opacity: 0.85; }
-            50% { transform: scale(1.04); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.85; }
+        @keyframes pulse-icon {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
         }
 
         /* ─────────── RESET & VARIABLES ─────────── */
@@ -1466,9 +1466,9 @@
 </head>
 <body>
 
-    <!-- ─── PRELOADER : ÉCRAN DE CHARGEMENT ─── -->
+    <!-- ─── PRELOADER : ICÔNE + SPINNER ─── -->
     <div id="preloader">
-        <img src="logo-miadv.png?v=2" alt="MIADV" class="loader-logo" />
+        <div class="loader-icon"><i class="fas fa-eye"></i></div>
         <div class="loader-spinner"></div>
         <div class="loader-text">Chargement...</div>
     </div>
@@ -2157,7 +2157,7 @@
             window.addEventListener('load', function() {
                 setTimeout(function() {
                     preloader.classList.add('hidden');
-                }, 700); // Le préloader reste visible 700ms après le chargement complet
+                }, 700);
             });
 
             // ─── Menu mobile ───
