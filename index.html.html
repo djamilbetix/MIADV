@@ -144,7 +144,7 @@
             background: #061f33;
         }
 
-        /* ─── HEADER (BARRE RÉDUITE) ─── */
+        /* ─── HEADER ─── */
         header {
             position: sticky;
             top: 0;
@@ -166,14 +166,12 @@
             flex-wrap: wrap;
         }
 
-        /* ── LOGO DÉCALÉ ENCORE PLUS À GAUCHE ── */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             padding: 2px 0;
             margin-left: -70px;
-            /* Encore plus à gauche */
         }
         .logo img {
             height: 250px;
@@ -973,6 +971,48 @@
             opacity: 0.9;
         }
 
+        /* ─────────── NOTRE VOIX, NOTRE RÉALITÉ ─────────── */
+        .voix-section {
+            background: var(--white);
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .voix-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        .voix-content p {
+            margin-bottom: 1.2rem;
+        }
+        .voix-content .voix-highlight {
+            margin: 2rem 0 1.5rem;
+            padding: 2rem 1.5rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            border-left: 6px solid var(--gold);
+            text-align: center;
+        }
+        .voix-content .voix-highlight .voix-principe {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--deep-blue);
+            font-style: italic;
+        }
+        .voix-content .voix-principle-box {
+            margin-top: 2rem;
+            padding: 1.8rem 2rem;
+            background: linear-gradient(145deg, #f7f9fc, #eef2f7);
+            border-radius: var(--radius);
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+        .voix-content .voix-principle-box strong {
+            font-size: 1.3rem;
+            color: var(--deep-blue);
+        }
+
         /* ─────────── ABOUT PAGE ─────────── */
         .about-page {
             background: var(--white);
@@ -1036,6 +1076,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
         }
         .team-member h4 {
             font-size: 1.05rem;
@@ -1049,15 +1090,12 @@
             margin: 0;
         }
 
-        /* ─── CARTE DR DIKUIZA : CADRE JAUNE, FOND PROFESSIONNEL ─── */
         .team-member.featured {
             grid-column: span 2;
             aspect-ratio: auto;
             padding: 2.5rem 2rem;
             background: linear-gradient(145deg, #f7f9fc, #eef2f7);
-            /* Fond élégant bleu-gris clair */
             border-left: 6px solid var(--gold);
-            /* Bordure gauche dorée */
             box-shadow: var(--shadow-md);
             border-radius: var(--radius);
         }
@@ -1065,11 +1103,8 @@
             width: 250px;
             height: 250px;
             border-radius: 16px;
-            /* Rectangle arrondi */
             border: 5px solid var(--gold);
-            /* Cadre jaune/or */
             box-shadow: 0 8px 30px rgba(201, 168, 76, 0.35);
-            /* Ombre dorée */
             transition: var(--transition);
             background: var(--light-blue);
         }
@@ -1081,7 +1116,6 @@
             border-radius: 12px;
             object-fit: cover;
             object-position: top center;
-            /* Garde la tête bien visible */
         }
         .team-member.featured h4 {
             font-size: 1.5rem;
@@ -1314,6 +1348,9 @@
             .histoire-content .pillars-highlight .pillars-text {
                 font-size: 1.3rem;
             }
+            .voix-content .voix-principle-box strong {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1344,6 +1381,12 @@
             .histoire-content .pillars-highlight .pillars-text {
                 font-size: 1.1rem;
             }
+            .voix-content .voix-highlight .voix-principe {
+                font-size: 1rem;
+            }
+            .voix-content .voix-principle-box strong {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -1366,6 +1409,7 @@
                 <li><a href="#missions">Nos missions</a></li>
                 <li><a href="#services">Nos services</a></li>
                 <li><a href="#programmes">Nos programmes</a></li>
+                <li><a href="#voix">Notre voix, notre réalité</a></li>
                 <li><a href="#evenement">Événement</a></li>
                 <li><a href="#actualites">Actualités</a></li>
                 <li><a href="#galerie">Galerie</a></li>
@@ -1602,6 +1646,33 @@
         </div>
     </section>
 
+    <!-- ─── NOTRE VOIX, NOTRE RÉALITÉ ─── -->
+    <section class="section voix-section" id="voix">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Notre Voix, Notre Réalité</h2>
+                <p class="section-subtitle">Un espace d'expression, d'écoute, de témoignage et de plaidoyer.</p>
+            </div>
+            <div class="voix-content fade-up">
+                <p>« Notre Voix, Notre Réalité » est un espace d’expression, d’écoute, de témoignage et de plaidoyer créé au sein de la <strong>Maison Internationale d’Assistance aux Déficients Visuels (MIADV)</strong>. Il donne directement la parole aux personnes aveugles et malvoyantes afin qu’elles puissent partager leur vécu, leurs difficultés, leurs capacités, leurs aspirations et leurs attentes.</p>
+
+                <p>À travers des interviews, témoignages, échanges et contenus audiovisuels, cet espace aborde notamment l’expérience de la perte visuelle, l’autonomie, l’accès aux soins, l’éducation, la formation professionnelle, l’emploi, la vie familiale et sociale, l’accessibilité ainsi que les différentes formes d’exclusion auxquelles les personnes déficientes visuelles peuvent être confrontées.</p>
+
+                <p>« Notre Voix, Notre Réalité » permet également de recueillir leurs attentes envers les professionnels de santé, les pouvoirs publics, les familles, les institutions et la société, afin de mieux comprendre leurs besoins réels et d’orienter les actions en faveur de leur accompagnement et de leur inclusion.</p>
+
+                <p>Cet espace constitue ainsi un outil de sensibilisation, de documentation et de plaidoyer en faveur des droits, de la dignité, de l’autonomie et de l’inclusion des personnes déficientes visuelles, tout en contribuant à faire évoluer le regard de la société sur la cécité et la malvoyance.</p>
+
+                <div class="voix-highlight">
+                    <div class="voix-principe">« Ne pas seulement parler des personnes aveugles et malvoyantes, mais leur donner directement la parole. »</div>
+                </div>
+
+                <div class="voix-principle-box">
+                    <strong>Principe central :</strong> Ne pas seulement parler des personnes aveugles et malvoyantes, mais leur donner directement la parole.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ─── ÉVÉNEMENT À VENIR ─── -->
     <section class="section event-video-section" id="evenement">
         <div class="container text-center">
@@ -1831,7 +1902,6 @@
                 <div>
                     <h3>Notre équipe</h3>
                     <div class="team-grid">
-                        <!-- Carte Dr Dikuiza : cadre jaune, fond professionnel -->
                         <div class="team-member featured">
                             <div class="avatar">
                                 <img src="dr-dikuiza.jpg?v=2" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
@@ -1899,6 +1969,7 @@
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com/@aidons.les.aveugl" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                     <div style="margin-top:1.5rem; background:var(--light-blue); padding:1rem; border-radius:var(--radius);">
                         <p><i class="fas fa-map-marked-alt" style="color:var(--green-accent);"></i> Carte interactive (simulée)</p>
@@ -1952,6 +2023,7 @@
                         <li><a href="#notre-histoire">Notre histoire</a></li>
                         <li><a href="#a-propos">À propos</a></li>
                         <li><a href="#services">Nos services</a></li>
+                        <li><a href="#voix">Notre voix</a></li>
                         <li><a href="#evenement">Événement</a></li>
                         <li><a href="#actualites">Actualités</a></li>
                         <li><a href="#structures-appui">Structures d'appui</a></li>
@@ -1983,6 +2055,7 @@
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com/@aidons.les.aveugl" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
