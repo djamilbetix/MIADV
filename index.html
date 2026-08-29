@@ -1305,38 +1305,6 @@
             font-weight: 500;
         }
 
-        /* ─── BARRE BLANCHE RÉSEAUX SOCIAUX (EN BAS) ─── */
-        .social-bar {
-            background: #ffffff;
-            padding: 1.2rem 0;
-            border-top: 1px solid var(--gray-border);
-            border-bottom: 1px solid var(--gray-border);
-            text-align: center;
-        }
-        .social-bar .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .social-bar .social-icons a {
-            font-size: 1.8rem;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        .social-bar .social-icons a:hover {
-            transform: translateY(-4px);
-            opacity: 0.8;
-        }
-        /* Couleurs officielles */
-        .social-bar .social-icons .fa-facebook-f { color: #1877f2; }
-        .social-bar .social-icons .fa-x-twitter { color: #000000; }
-        .social-bar .social-icons .fa-linkedin-in { color: #0a66c2; }
-        .social-bar .social-icons .fa-instagram { color: #e4405f; }
-        .social-bar .social-icons .fa-youtube { color: #ff0000; }
-        .social-bar .social-icons .fa-whatsapp { color: #25d366; }
-        .social-bar .social-icons .fa-tiktok { color: #000000; }
-
         /* ─── FOOTER ─── */
         footer {
             background: var(--deep-blue);
@@ -1375,6 +1343,39 @@
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.4);
         }
+
+        /* ─── BARRE RÉSEAUX SOCIAUX EN BAS DU FOOTER ─── */
+        .social-bar {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .social-bar .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .social-bar .social-icons a {
+            font-size: 1.8rem;
+            transition: var(--transition);
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .social-bar .social-icons a:hover {
+            transform: translateY(-4px);
+            opacity: 0.8;
+            color: var(--white);
+        }
+        /* Couleurs officielles au survol */
+        .social-bar .social-icons a:hover .fa-facebook-f { color: #1877f2; }
+        .social-bar .social-icons a:hover .fa-x-twitter { color: #ffffff; }
+        .social-bar .social-icons a:hover .fa-linkedin-in { color: #0a66c2; }
+        .social-bar .social-icons a:hover .fa-instagram { color: #e4405f; }
+        .social-bar .social-icons a:hover .fa-youtube { color: #ff0000; }
+        .social-bar .social-icons a:hover .fa-whatsapp { color: #25d366; }
+        .social-bar .social-icons a:hover .fa-tiktok { color: #ffffff; }
 
         .fade-up {
             opacity: 0;
@@ -2090,21 +2091,6 @@
         </div>
     </section>
 
-    <!-- ─── BARRE BLANCHE RÉSEAUX SOCIAUX ─── -->
-    <div class="social-bar">
-        <div class="container">
-            <div class="social-icons">
-                <a href="https://www.facebook.com/share/19MgHEe6y5/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/Aidonslesatc4r" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/miadv-undefined-1abb51431?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/aveugles2026?igsi=NmhpbTA1amZpbnJk" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://tiktok.com/@aidons.les.aveugl" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-    </div>
-
     <!-- ─── FOOTER ─── -->
     <footer>
         <div class="container">
@@ -2147,6 +2133,20 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- ─── BARRE RÉSEAUX SOCIAUX EN BAS DU FOOTER ─── -->
+            <div class="social-bar">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/19MgHEe6y5/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Aidonslesatc4r" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/miadv-undefined-1abb51431?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/aveugles2026?igsi=NmhpbTA1amZpbnJk" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com/@aidons.les.aveugl" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
             <div class="footer-bottom">
                 &copy; 2026 MIADV — Tous droits réservés.
             </div>
