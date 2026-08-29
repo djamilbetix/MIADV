@@ -1,75 +1,2331 @@
-<!-- ─── FOOTER ─── -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>MIADV</h4>
-                <p style="font-size:0.9rem; opacity:0.7;">Maison Internationale d'Assistance aux Déficients Visuels</p>
-                <p style="font-size:0.8rem; margin-top:0.3rem; opacity:0.6;">Prévenir · Soigner · Réadapter · Inclure</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#notre-histoire">Notre histoire</a></li>
-                    <li><a href="#a-propos">À propos</a></li>
-                    <li><a href="#services">Nos services</a></li>
-                    <li><a href="#voix">Notre voix</a></li>
-                    <li><a href="#evenement">Événement</a></li>
-                    <li><a href="#actualites">Actualités</a></li>
-                    <li><a href="#structures-appui">Structures d'appui</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Nos missions</h4>
-                <ul>
-                    <li><a href="#missions">Prévenir</a></li>
-                    <li><a href="#missions">Soigner</a></li>
-                    <li><a href="#missions">Réadapter</a></li>
-                    <li><a href="#missions">Inclure</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +243 860 094 836</li>
-                    <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +243 897 470 502</li>
-                    <li><i class="fas fa-envelope" style="margin-right:6px;"></i> contact@miadv.org</li>
-                    <li><i class="fas fa-map-pin" style="margin-right:6px;"></i> Kinshasa, RDC</li>
-                </ul>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIADV – Maison Internationale d'Assistance aux Déficients Visuels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ─────────── PRELOADER ─────────── */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #preloader .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #e2e8f0;
+            border-top: 5px solid #2e7d32;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-        <!-- ─── BARRE RÉSEAUX SOCIAUX (CERCLES BLANCS) ─── -->
-        <div class="social-bar">
-            <div class="social-icons">
-                <a href="https://www.facebook.com/share/19MgHEe6y5/" target="_blank" aria-label="Facebook" class="social-circle">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://x.com/Aidonslesatc4r" target="_blank" aria-label="X (Twitter)" class="social-circle">
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/miadv-undefined-1abb51431?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn" class="social-circle">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.instagram.com/aveugles2026?igsi=NmhpbTA1amZpbnJk" target="_blank" aria-label="Instagram" class="social-circle">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" target="_blank" aria-label="YouTube" class="social-circle">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp" class="social-circle">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://tiktok.com/@aidons.les.aveugl" target="_blank" aria-label="TikTok" class="social-circle">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
-        </div>
+        /* ─────────── RESET & VARIABLES ─────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <div class="footer-bottom">
-            &copy; 2026 MIADV — Tous droits réservés.
-        </div>
+        :root {
+            --deep-blue: #0a2a44;
+            --royal-blue: #1a4f7a;
+            --light-blue: #e6f0fa;
+            --green-accent: #2e7d32;
+            --gold: #c9a84c;
+            --white: #ffffff;
+            --gray-light: #f7f9fc;
+            --gray-border: #e2e8f0;
+            --gray-text: #2d3748;
+            --gray-muted: #4a5568;
+            --title-color: #1a4f7a;
+            --shadow-sm: 0 2px 12px rgba(10, 42, 68, 0.06);
+            --shadow-md: 0 8px 30px rgba(10, 42, 68, 0.10);
+            --shadow-lg: 0 20px 60px rgba(10, 42, 68, 0.14);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--gray-light);
+            color: var(--gray-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: var(--title-color);
+        }
+        h1 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+        }
+        h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+        }
+        h3 {
+            font-size: clamp(1.4rem, 2vw, 1.8rem);
+        }
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        .section-title {
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--green-accent);
+            border-radius: 4px;
+        }
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-muted);
+            max-width: 60ch;
+            margin-top: 0.8rem;
+            margin-bottom: 2.8rem;
+        }
+        .text-center .section-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2.8rem;
+            background: var(--green-accent);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(46, 125, 50, 0.25);
+            cursor: pointer;
+            letter-spacing: 0.02em;
+        }
+        .btn:hover {
+            background: #1b5e20;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(46, 125, 50, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--deep-blue);
+            box-shadow: inset 0 0 0 2px var(--deep-blue);
+        }
+        .btn-outline:hover {
+            background: var(--deep-blue);
+            color: var(--white);
+            box-shadow: 0 12px 32px rgba(10, 42, 68, 0.20);
+        }
+        .btn-donation {
+            background: var(--deep-blue);
+            box-shadow: 0 4px 16px rgba(10, 42, 68, 0.25);
+        }
+        .btn-donation:hover {
+            background: #061f33;
+        }
+
+        /* ─── HEADER (BARRE COMPACTE) ─── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            padding: 0.1rem 0;
+            transition: box-shadow 0.3s;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 2px 0;
+            margin-left: -20px;
+        }
+        .logo img {
+            height: 120px;
+            width: auto;
+            display: block;
+            border-radius: 0;
+            max-height: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .nav-links a {
+            padding: 0.3rem 1rem;
+            text-decoration: none;
+            color: var(--gray-text);
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-radius: 60px;
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            background: var(--light-blue);
+            color: var(--deep-blue);
+        }
+        .nav-links a.btn-nav {
+            background: var(--green-accent);
+            color: var(--white);
+        }
+        .nav-links a.btn-nav:hover {
+            background: #1b5e20;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            font-size: 2rem;
+            color: var(--deep-blue);
+            cursor: pointer;
+            padding: 0.3rem 0.7rem;
+            margin-left: auto;
+            box-shadow: 0 4px 16px rgba(10, 42, 68, 0.08);
+            transition: var(--transition);
+        }
+        .mobile-toggle:hover {
+            box-shadow: 0 6px 24px rgba(10, 42, 68, 0.15);
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .logo img {
+                height: 90px;
+            }
+            .logo {
+                margin-left: -12px;
+            }
+            .nav-links a {
+                padding: 0.25rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0.5rem 0;
+                gap: 2px;
+                background: var(--white);
+                border-radius: var(--radius);
+                box-shadow: 0 16px 48px rgba(10, 42, 68, 0.12);
+                border: 1px solid var(--gray-border);
+                margin-top: 0.8rem;
+                padding: 0.8rem 0.5rem;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                text-align: center;
+                padding: 0.7rem 0.6rem;
+                border-radius: 8px;
+                font-size: 0.9rem;
+            }
+            .logo img {
+                height: 80px;
+            }
+            .logo {
+                margin-left: -8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 60px;
+            }
+            .logo {
+                margin-left: 0;
+            }
+            header {
+                padding: 0.05rem 0;
+            }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 4rem 0 3rem;
+            background: linear-gradient(160deg, var(--gray-light) 0%, #eef2f7 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 79, 122, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+        .hero-content .hero-sub {
+            font-size: 1.2rem;
+            color: var(--gray-muted);
+            margin: 0.5rem 0 1.2rem;
+            font-weight: 400;
+        }
+        .hero-content p {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 50ch;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--royal-blue);
+            font-size: 4rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ─── NOTRE HISTOIRE ─── */
+        .histoire-section {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+        }
+        .histoire-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        .histoire-content p {
+            margin-bottom: 1.2rem;
+        }
+        .histoire-content .pillars-highlight {
+            margin-top: 2rem;
+            padding: 2rem 1.5rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            border-left: 6px solid var(--green-accent);
+            text-align: center;
+        }
+        .histoire-content .pillars-highlight .pillars-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--deep-blue);
+            letter-spacing: 0.04em;
+        }
+        .histoire-content .pillars-highlight .pillars-sub {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: var(--gray-muted);
+            font-size: 1.1rem;
+        }
+
+        /* ─────────── SECTIONS COMMUNES ─────────── */
+        .section {
+            padding: 5rem 0;
+        }
+        .section-alt {
+            background: var(--white);
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .value-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .value-card .icon {
+            font-size: 2.6rem;
+            color: var(--green-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .value-card h4 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .mission-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .mission-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+        .mission-card .icon {
+            font-size: 2.8rem;
+            color: var(--royal-blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .mission-card h4 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+        }
+        .mission-card p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 1.8rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .service-card .icon {
+            font-size: 2.4rem;
+            color: var(--green-accent);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .service-card h4 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .impact-item {
+            background: var(--white);
+            padding: 2rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .impact-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--title-color);
+            line-height: 1.2;
+        }
+        .impact-label {
+            font-size: 1rem;
+            color: var(--gray-muted);
+            margin-top: 0.3rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .program-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .program-card .prog-img {
+            height: 160px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--royal-blue);
+        }
+        .program-card .prog-body {
+            padding: 1.5rem;
+        }
+        .program-card .prog-body h4 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .program-card .prog-body p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+            margin-bottom: 0.5rem;
+        }
+        .program-card .prog-body .btn-small {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--green-accent);
+            color: var(--white);
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .program-card .prog-body .btn-small:hover {
+            background: #1b5e20;
+        }
+
+        .event-video-section {
+            background: var(--gray-light);
+        }
+        .video-card {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .video-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .video-card video {
+            width: 100%;
+            display: block;
+            background: #000;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+        .video-description {
+            padding: 1.8rem 2rem;
+            text-align: left;
+        }
+        .video-description h3 {
+            color: var(--title-color);
+            margin-bottom: 0.3rem;
+        }
+        .video-description p {
+            color: var(--gray-muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+        .video-description .event-date-badge {
+            display: inline-block;
+            background: var(--green-accent);
+            color: var(--white);
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .news-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .news-card .news-img {
+            height: 180px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--royal-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        .news-card .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .news-card .news-img .category-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--green-accent);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .news-card .news-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card .news-meta {
+            font-size: 0.8rem;
+            color: var(--gray-muted);
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .news-card .news-body h4 {
+            color: var(--title-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .news-card .news-body p {
+            font-size: 0.95rem;
+            color: var(--gray-muted);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        .news-card .news-body .btn-small {
+            align-self: flex-start;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--deep-blue);
+            color: var(--white);
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .news-card .news-body .btn-small:hover {
+            background: var(--royal-blue);
+            transform: translateX(4px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .gallery-item {
+            aspect-ratio: 1/1;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--royal-blue);
+            border: 1px solid var(--gray-border);
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox.open {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 3rem;
+            color: var(--white);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .testimonial-card .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--royal-blue);
+            margin-bottom: 1rem;
+        }
+        .testimonial-card blockquote {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--gray-text);
+            margin-bottom: 0.8rem;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--title-color);
+        }
+        .testimonial-card .role {
+            font-size: 0.85rem;
+            color: var(--gray-muted);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .partner-item {
+            background: var(--white);
+            padding: 1.5rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .partner-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-md);
+        }
+        .partner-item .partner-logo {
+            font-size: 2.8rem;
+            color: var(--royal-blue);
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+        .partner-item .partner-logo img {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .partner-item .partner-name {
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-top: 0.3rem;
+        }
+        .partner-item .partner-desc {
+            font-size: 0.8rem;
+            color: var(--gray-muted);
+        }
+
+        /* ─── STRUCTURES D'APPUI (MIBATELA) ─── */
+        .appui-section {
+            background: var(--gray-light);
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .appui-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+        .appui-content h3 {
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+        }
+        .appui-content .appui-subtitle {
+            font-weight: 600;
+            color: var(--green-accent);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .appui-content p {
+            margin-bottom: 1rem;
+            color: var(--gray-text);
+        }
+        .appui-content .pillars-inline {
+            font-weight: 800;
+            color: var(--deep-blue);
+            font-size: 1.2rem;
+            letter-spacing: 0.04em;
+            margin-top: 0.5rem;
+            padding: 0.8rem 1rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .appui-video {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-border);
+        }
+        .appui-video video {
+            width: 100%;
+            display: block;
+            background: #000;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+        .appui-video .appui-logo-placeholder {
+            padding: 1rem;
+            text-align: center;
+            background: var(--white);
+            border-top: 1px solid var(--gray-border);
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .appui-video .appui-logo-placeholder img {
+            max-height: 40px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .appui-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .appui-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ─── DONATION ─── */
+        .donation-section {
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .donation-section h2 {
+            color: var(--white);
+        }
+        .donation-section .section-title::after {
+            background: var(--green-accent);
+        }
+        .donation-section p {
+            max-width: 60ch;
+            margin: 1rem auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ─────────── NOTRE VOIX, NOTRE RÉALITÉ ─────────── */
+        .voix-section {
+            background: var(--white);
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .voix-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        .voix-content p {
+            margin-bottom: 1.2rem;
+        }
+        .voix-content .voix-highlight {
+            margin: 2rem 0 1.5rem;
+            padding: 2rem 1.5rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            border-left: 6px solid var(--gold);
+            text-align: center;
+        }
+        .voix-content .voix-highlight .voix-principe {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--deep-blue);
+            font-style: italic;
+        }
+        .voix-content .voix-principle-box {
+            margin-top: 2rem;
+            padding: 1.8rem 2rem;
+            background: linear-gradient(145deg, #f7f9fc, #eef2f7);
+            border-radius: var(--radius);
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+        .voix-content .voix-principle-box strong {
+            font-size: 1.3rem;
+            color: var(--deep-blue);
+        }
+
+        /* ─────────── ABOUT PAGE ─────────── */
+        .about-page {
+            background: var(--white);
+        }
+        .about-page .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-page .about-text {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        .about-page .about-text h3 {
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+        }
+        .about-page .about-text h3:first-of-type {
+            margin-top: 0;
+        }
+        .about-page .about-text p {
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+        .about-page .about-text ul {
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+        .about-page .about-text ul li {
+            margin-bottom: 0.2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .team-member {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+            transition: var(--transition);
+            text-align: center;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+        .team-member:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .team-member .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--light-blue);
+            margin: 0 auto 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--royal-blue);
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--gray-border);
+            transition: var(--transition);
+        }
+        .team-member:hover .avatar {
+            border-color: var(--green-accent);
+            transform: scale(1.05);
+        }
+        .team-member .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .team-member h4 {
+            font-size: 1.05rem;
+            color: var(--deep-blue);
+            margin-bottom: 0.2rem;
+            line-height: 1.2;
+        }
+        .team-member p {
+            font-size: 0.85rem;
+            color: var(--gray-muted);
+            margin: 0;
+        }
+
+        .team-member.featured {
+            grid-column: span 2;
+            aspect-ratio: auto;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(145deg, #f7f9fc, #eef2f7);
+            border-left: 6px solid var(--gold);
+            box-shadow: var(--shadow-md);
+            border-radius: var(--radius);
+        }
+        .team-member.featured .avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 16px;
+            border: 5px solid var(--gold);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.35);
+            transition: var(--transition);
+            background: var(--light-blue);
+        }
+        .team-member.featured:hover .avatar {
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(201, 168, 76, 0.5);
+        }
+        .team-member.featured .avatar img {
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .team-member.featured h4 {
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            margin-top: 0.8rem;
+        }
+        .team-member.featured p {
+            font-size: 1.05rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .team-member.featured {
+                grid-column: span 1;
+            }
+            .team-member.featured .avatar {
+                width: 200px;
+                height: 200px;
+            }
+            .team-member.featured h4 {
+                font-size: 1.2rem;
+            }
+            .team-member .avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.8rem;
+            }
+            .team-member h4 {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-member .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
+            }
+            .team-member.featured .avatar {
+                width: 160px;
+                height: 160px;
+                border-radius: 12px;
+            }
+            .team-member {
+                aspect-ratio: auto;
+                padding: 1.2rem;
+            }
+            .team-member.featured h4 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ─── CONTACT ─── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+        .contact-info h3 {
+            color: var(--title-color);
+            margin-bottom: 1rem;
+        }
+        .contact-details {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1rem;
+        }
+        .contact-details i {
+            width: 1.8rem;
+            color: var(--green-accent);
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-border);
+        }
+        .contact-form label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--gray-text);
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--gray-light);
+            transition: var(--transition);
+            font-family: var(--font);
+            margin-bottom: 1.2rem;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--deep-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(10, 42, 68, 0.08);
+            outline: none;
+        }
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+        .contact-form .form-feedback {
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--deep-blue);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 2.5rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: var(--white);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ─── BARRE RÉSEAUX SOCIAUX (CERCLES BLANCS) ─── */
+        .social-bar {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .social-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: var(--deep-blue);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .social-circle:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        /* Couleurs officielles au survol */
+        .social-circle:hover .fa-facebook-f { color: #1877f2; }
+        .social-circle:hover .fa-x-twitter { color: #000000; }
+        .social-circle:hover .fa-linkedin-in { color: #0a66c2; }
+        .social-circle:hover .fa-instagram { color: #e4405f; }
+        .social-circle:hover .fa-youtube { color: #ff0000; }
+        .social-circle:hover .fa-whatsapp { color: #25d366; }
+        .social-circle:hover .fa-tiktok { color: #000000; }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-image {
+                order: -1;
+            }
+            .about-page .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2.5rem 0 2rem;
+            }
+            .values-grid,
+            .missions-grid,
+            .services-grid,
+            .impact-grid,
+            .programs-grid,
+            .news-grid,
+            .testimonials-grid,
+            .partners-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .social-icons {
+                gap: 0.8rem;
+            }
+            .social-circle {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+            .histoire-content .pillars-highlight .pillars-text {
+                font-size: 1.3rem;
+            }
+            .voix-content .voix-principle-box strong {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .values-grid,
+            .missions-grid,
+            .services-grid,
+            .impact-grid,
+            .programs-grid,
+            .news-grid,
+            .testimonials-grid,
+            .partners-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-buttons .btn {
+                text-align: center;
+            }
+            .social-circle {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .histoire-content .pillars-highlight .pillars-text {
+                font-size: 1.1rem;
+            }
+            .voix-content .voix-highlight .voix-principe {
+                font-size: 1rem;
+            }
+            .voix-content .voix-principle-box strong {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── PRELOADER : SPINNER VERT SEUL ─── -->
+    <div id="preloader">
+        <div class="loader-spinner"></div>
     </div>
-</footer>
+
+    <!-- ─── HEADER ─── -->
+    <header id="header">
+        <div class="container nav">
+            <a href="#accueil" class="logo" aria-label="MIADV - Accueil">
+                <img src="logo-miadv.png?v=2" alt="Logo MIADV" />
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks" role="navigation">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#notre-histoire">Notre histoire</a></li>
+                <li><a href="#a-propos">À propos</a></li>
+                <li><a href="#missions">Nos missions</a></li>
+                <li><a href="#services">Nos services</a></li>
+                <li><a href="#programmes">Nos programmes</a></li>
+                <li><a href="#voix">Notre voix, notre réalité</a></li>
+                <li><a href="#evenement">Événement</a></li>
+                <li><a href="#actualites">Actualités</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#structures-appui">Structures d'appui</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#don" class="btn-nav">Faire un don</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="accueil">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Ensemble, construisons un monde plus <span style="color:var(--green-accent);">inclusif</span>.</h1>
+                <p class="hero-sub">La MIADV accompagne, soigne, réadapte et favorise l'inclusion des personnes déficientes visuelles afin de leur permettre de vivre avec plus d'autonomie et de dignité.</p>
+                <div class="hero-buttons">
+                    <a href="#missions" class="btn">Découvrir nos actions</a>
+                    <a href="#don" class="btn btn-outline">Soutenir la MIADV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder" role="img" aria-label="Illustration : inclusion et accompagnement">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOTRE HISTOIRE ─── -->
+    <section class="section histoire-section" id="notre-histoire">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Notre histoire</h2>
+            </div>
+            <div class="histoire-content fade-up">
+                <p>La Maison Internationale d'Assistance aux Déficients Visuels (MIADV) est une initiative du <strong>Dr DIKUIZA MAKUBIKUA GLODI</strong>, médecin prestant dans un service d'ophtalmologie.</p>
+                <p>Au cours de sa pratique médicale, il a été confronté à une réalité particulièrement préoccupante : lorsqu'un patient atteint un stade de cécité irréversible, l'ophtalmologue peut être amené à lui annoncer que les possibilités de récupération visuelle sont épuisées. Mais après cette annonce difficile, que devient le patient ?</p>
+                <p>Son premier constat a été l'absence fréquente d'un véritable accompagnement après l'annonce de la cécité. Le patient peut quitter le service médical avec son diagnostic, mais sans accompagnement psychologique, sans programme de réadaptation et sans préparation à cette nouvelle vie.</p>
+                <p>Pour certains patients, cette rupture est profonde : détresse psychologique, perte de repères, isolement, irritabilité, dépendance, perte d'autonomie et difficultés de réinsertion familiale, professionnelle et sociale. Dans les situations les plus graves, la souffrance psychologique peut devenir majeure.</p>
+                <p>Un deuxième constat concerne la place de la personne aveugle dans la société. En République démocratique du Congo et dans plusieurs communautés africaines, de nombreuses personnes atteintes de cécité vivent encore dans des conditions de grande précarité. Certaines se retrouvent dans les rues ou les lieux publics, contraintes de recourir à la mendicité pour survivre.</p>
+                <p>Chez l'enfant atteint de cécité, les conséquences peuvent être tout aussi importantes : rupture scolaire, interruption des apprentissages, isolement social et réduction des perspectives d'avenir, alors qu'avec une éducation adaptée, le braille, la réadaptation et les technologies accessibles, cet enfant peut continuer à apprendre et à développer son potentiel.</p>
+                <p>De ces constats est née une conviction : la mission ne doit pas s'arrêter lorsque la médecine ne peut plus restaurer la vision.</p>
+                <p>C'est ainsi que le Dr DIKUIZA MAKUBIKUA GLODI a initié la Maison Internationale d'Assistance aux Déficients Visuels (MIADV), afin de construire une réponse globale destinée aux personnes aveugles et malvoyantes.</p>
+                <p>La MIADV veut assurer une continuité entre la prévention, les soins, l'accompagnement psychologique, la réadaptation et l'inclusion sociale.</p>
+                <p>De cette vision sont nés quatre piliers :</p>
+
+                <div class="pillars-highlight">
+                    <div class="pillars-text">PRÉVENIR • SOIGNER • RÉADAPTER • INCLURE</div>
+                    <div class="pillars-sub">Parce que lorsque la vision ne peut plus être restaurée, l'accompagnement, la dignité, l'autonomie et l'avenir de la personne doivent continuer.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── QUI SOMMES-NOUS ? ─── -->
+    <section class="section" id="a-propos">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Une mission au service de l'inclusion</h2>
+                <p class="section-subtitle">La MIADV est une organisation dédiée à l'accompagnement des personnes déficientes visuelles, en <strong>République démocratique du Congo (RDC) et à l'international</strong>.</p>
+            </div>
+            <div class="values-grid fade-up">
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                    <h4>Prévenir</h4>
+                    <p>Sensibilisation, prévention et dépistage des problèmes de vision.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-stethoscope"></i></span>
+                    <h4>Soigner</h4>
+                    <p>Orientation, accompagnement et accès aux soins adaptés.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-arrow-up"></i></span>
+                    <h4>Réadapter</h4>
+                    <p>Accompagnement vers l'autonomie et développement des capacités.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <h4>Inclure</h4>
+                    <p>Favoriser la participation sociale, éducative et professionnelle.</p>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:2.5rem;">
+                <a href="#a-propos-approfondi" class="btn btn-outline">En savoir plus sur la MIADV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOS MISSIONS ─── -->
+    <section class="section section-alt" id="missions">
+        <div class="container text-center">
+            <h2 class="section-title">Nos missions</h2>
+            <p class="section-subtitle">Quatre piliers pour une inclusion pleine et entière.</p>
+            <div class="missions-grid fade-up">
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-eye"></i></span>
+                    <h4>Prévenir</h4>
+                    <p>Sensibilisation, prévention et dépistage des problèmes liés à la vision.</p>
+                </div>
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-heartbeat"></i></span>
+                    <h4>Soigner</h4>
+                    <p>Orientation, accompagnement et accès aux soins adaptés.</p>
+                </div>
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-hand-holding-heart"></i></span>
+                    <h4>Réadapter</h4>
+                    <p>Accompagnement vers davantage d'autonomie et développement des capacités.</p>
+                </div>
+                <div class="mission-card">
+                    <span class="icon"><i class="fas fa-user-friends"></i></span>
+                    <h4>Inclure</h4>
+                    <p>Favoriser la participation sociale, éducative et professionnelle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOS SERVICES ─── -->
+    <section class="section" id="services">
+        <div class="container text-center">
+            <h2 class="section-title">Nos services</h2>
+            <p class="section-subtitle">Un accompagnement sur mesure pour chaque personne.</p>
+            <div class="services-grid fade-up">
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-user-md"></i></span>
+                    <h4>Accompagnement des personnes</h4>
+                    <p>Suivi personnalisé et orientation vers les ressources adaptées.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-brain"></i></span>
+                    <h4>Réadaptation</h4>
+                    <p>Programmes de rééducation et d'apprentissage de nouvelles compétences.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-bullhorn"></i></span>
+                    <h4>Sensibilisation</h4>
+                    <p>Campagnes d'information et actions de prévention grand public.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-ambulance"></i></span>
+                    <h4>Orientation médicale</h4>
+                    <p>Accès aux soins ophtalmologiques et suivi orthoptique.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                    <h4>Formation</h4>
+                    <p>Ateliers éducatifs et formation des aidants et professionnels.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-hands-helping"></i></span>
+                    <h4>Accompagnement social</h4>
+                    <p>Aide aux démarches, soutien psychologique et insertion sociale.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-school"></i></span>
+                    <h4>Inclusion scolaire</h4>
+                    <p>Adaptations pédagogiques et accompagnement en milieu scolaire.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-briefcase"></i></span>
+                    <h4>Inclusion professionnelle</h4>
+                    <p>Accompagnement vers l'emploi et formation professionnelle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── IMPACT ─── -->
+    <section class="section section-alt" id="impact">
+        <div class="container text-center">
+            <h2 class="section-title">Notre impact</h2>
+            <p class="section-subtitle">Des chiffres qui témoignent de notre engagement.</p>
+            <div class="impact-grid fade-up">
+                <div class="impact-item">
+                    <div class="impact-number" data-target="1200">0</div>
+                    <div class="impact-label">Personnes accompagnées</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" data-target="350">0</div>
+                    <div class="impact-label">Actions réalisées</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" data-target="25">0</div>
+                    <div class="impact-label">Programmes mis en place</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" data-target="45">0</div>
+                    <div class="impact-label">Partenaires actifs</div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gray-muted);">
+                * Ces chiffres sont temporaires et seront mis à jour avec les données officielles.
+            </p>
+        </div>
+    </section>
+
+    <!-- ─── PROGRAMMES ─── -->
+    <section class="section" id="programmes">
+        <div class="container text-center">
+            <h2 class="section-title">Nos programmes</h2>
+            <p class="section-subtitle">Des actions concrètes pour changer des vies.</p>
+            <div class="programs-grid fade-up">
+                <div class="program-card">
+                    <div class="prog-img"><i class="fas fa-child"></i></div>
+                    <div class="prog-body">
+                        <h4>École inclusive</h4>
+                        <p>Accompagnement des enfants déficients visuels en milieu scolaire.</p>
+                        <p><strong>Objectif :</strong> Assurer une scolarité épanouissante.</p>
+                        <a href="#" class="btn-small">Découvrir</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="prog-img"><i class="fas fa-briefcase"></i></div>
+                    <div class="prog-body">
+                        <h4>Insertion professionnelle</h4>
+                        <p>Formation et accompagnement vers l'emploi pour les adultes malvoyants.</p>
+                        <p><strong>Objectif :</strong> Autonomie financière et sociale.</p>
+                        <a href="#" class="btn-small">Découvrir</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="prog-img"><i class="fas fa-heart"></i></div>
+                    <div class="prog-body">
+                        <h4>Bien-être et réadaptation</h4>
+                        <p>Ateliers de rééducation et soutien psychologique.</p>
+                        <p><strong>Objectif :</strong> Renforcer la confiance et l'autonomie.</p>
+                        <a href="#" class="btn-small">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NOTRE VOIX, NOTRE RÉALITÉ ─── -->
+    <section class="section voix-section" id="voix">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Notre Voix, Notre Réalité</h2>
+                <p class="section-subtitle">Un espace d'expression, d'écoute, de témoignage et de plaidoyer.</p>
+            </div>
+            <div class="voix-content fade-up">
+                <p>« Notre Voix, Notre Réalité » est un espace d’expression, d’écoute, de témoignage et de plaidoyer créé au sein de la <strong>Maison Internationale d’Assistance aux Déficients Visuels (MIADV)</strong>. Il donne directement la parole aux personnes aveugles et malvoyantes afin qu’elles puissent partager leur vécu, leurs difficultés, leurs capacités, leurs aspirations et leurs attentes.</p>
+
+                <p>À travers des interviews, témoignages, échanges et contenus audiovisuels, cet espace aborde notamment l’expérience de la perte visuelle, l’autonomie, l’accès aux soins, l’éducation, la formation professionnelle, l’emploi, la vie familiale et sociale, l’accessibilité ainsi que les différentes formes d’exclusion auxquelles les personnes déficientes visuelles peuvent être confrontées.</p>
+
+                <p>« Notre Voix, Notre Réalité » permet également de recueillir leurs attentes envers les professionnels de santé, les pouvoirs publics, les familles, les institutions et la société, afin de mieux comprendre leurs besoins réels et d’orienter les actions en faveur de leur accompagnement et de leur inclusion.</p>
+
+                <p>Cet espace constitue ainsi un outil de sensibilisation, de documentation et de plaidoyer en faveur des droits, de la dignité, de l’autonomie et de l’inclusion des personnes déficientes visuelles, tout en contribuant à faire évoluer le regard de la société sur la cécité et la malvoyance.</p>
+
+                <div class="voix-highlight">
+                    <div class="voix-principe">« Ne pas seulement parler des personnes aveugles et malvoyantes, mais leur donner directement la parole. »</div>
+                </div>
+
+                <div class="voix-principle-box">
+                    <strong>Principe central :</strong> Ne pas seulement parler des personnes aveugles et malvoyantes, mais leur donner directement la parole.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ÉVÉNEMENT À VENIR ─── -->
+    <section class="section event-video-section" id="evenement">
+        <div class="container text-center">
+            <h2 class="section-title">Événement à venir</h2>
+            <p class="section-subtitle">Découvrez en avant-première notre grand événement de septembre 2026.</p>
+            <div class="video-card fade-up">
+                <video autoplay muted playsinline loop controls poster="poster-event.jpg">
+                    <source src="evenement-miadv-septembre-2026.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéo.
+                </video>
+                <div class="video-description">
+                    <span class="event-date-badge"><i class="far fa-calendar-alt" style="margin-right:6px;"></i> 21 septembre 2026</span>
+                    <h3>Lancement officiel de la CISAV – Sunga Aveugle na 2$</h3>
+                    <p>Le 21 septembre 2026, la MIADV procédera au lancement officiel de la Cagnotte Internationale de Solidarité Sunga Aveugle (CISAV), sous le concept : <strong>« SUNGA AVEUGLE NA 2$ »</strong>.</p>
+                    <p>La CISAV est un mécanisme permanent de mobilisation et de solidarité, fondé sur une contribution minimale de 2 USD, accessible à toute personne souhaitant soutenir la cause des personnes aveugles et malvoyantes.</p>
+                    <p>Les ressources mobilisées contribueront au financement des actions de la MIADV dans les domaines de la prévention, des soins, de l'assistance, de la réadaptation et de l'inclusion.</p>
+                    <p>L'événement du 21 septembre 2026 marquera le lancement d'une initiative appelée à se poursuivre dans le temps et à fédérer progressivement citoyens, communautés, institutions et partenaires autour d'un même engagement : <strong>Faire de la solidarité une force durable au service des personnes déficientes visuelles.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ACTUALITÉS ─── -->
+    <section class="section section-alt" id="actualites">
+        <div class="container text-center">
+            <h2 class="section-title">Actualités</h2>
+            <p class="section-subtitle">Suivez nos dernières actions et événements.</p>
+            <div class="news-grid fade-up">
+                <div class="news-card">
+                    <div class="news-img">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="category-badge">Événement</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 12 mai 2025</span></div>
+                        <h4>Journée de dépistage gratuite</h4>
+                        <p>Plus de 200 personnes ont bénéficié d'un dépistage visuel gratuit dans nos locaux.</p>
+                        <a href="#" class="btn-small">Lire la suite</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <i class="fas fa-hands"></i>
+                        <span class="category-badge">Partenariat</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 28 avril 2025</span></div>
+                        <h4>Nouveau partenariat avec l'Université</h4>
+                        <p>Un programme de recherche sur l'accessibilité numérique vient d'être lancé.</p>
+                        <a href="#" class="btn-small">Lire la suite</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <i class="fas fa-users"></i>
+                        <span class="category-badge">Formation</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-meta"><span><i class="far fa-calendar-alt"></i> 10 mars 2025</span></div>
+                        <h4>Formation des aidants</h4>
+                        <p>Une formation pour mieux accompagner les proches déficients visuels.</p>
+                        <a href="#" class="btn-small">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── GALERIE ─── -->
+    <section class="section" id="galerie">
+        <div class="container text-center">
+            <h2 class="section-title">Galerie</h2>
+            <p class="section-subtitle">Retour en images sur nos activités.</p>
+            <div class="gallery-grid fade-up" id="galleryGrid">
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/1a4f7a/ffffff?text=MIADV+1"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/2e7d32/ffffff?text=MIADV+2"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/0a2a44/ffffff?text=MIADV+3"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/1a4f7a/ffffff?text=MIADV+4"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/2e7d32/ffffff?text=MIADV+5"><i class="fas fa-camera"></i></div>
+                <div class="gallery-item" data-img="https://via.placeholder.com/600x600/0a2a44/ffffff?text=MIADV+6"><i class="fas fa-camera"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="close" id="lightboxClose" aria-label="Fermer">&times;</button>
+        <img src="" alt="Agrandissement" id="lightboxImg" />
+    </div>
+
+    <!-- ─── TÉMOIGNAGES ─── -->
+    <section class="section section-alt" id="temoignages">
+        <div class="container text-center">
+            <h2 class="section-title">Ils témoignent</h2>
+            <p class="section-subtitle">La parole de ceux que nous accompagnons.</p>
+            <div class="testimonials-grid fade-up">
+                <div class="testimonial-card">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <blockquote>"Grâce à la MIADV, j'ai retrouvé confiance en moi et une autonomie que je croyais perdue."</blockquote>
+                    <div class="author">Marie Dupont</div>
+                    <div class="role">Bénéficiaire</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <blockquote>"L'accompagnement professionnel et humain de la MIADV a changé ma vie."</blockquote>
+                    <div class="author">Jean-Pierre Martin</div>
+                    <div class="role">Bénéficiaire</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <blockquote>"Une équipe compétente et bienveillante. Je recommande vivement."</blockquote>
+                    <div class="author">Sophie Laurent</div>
+                    <div class="role">Parent d'un enfant accompagné</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PARTENAIRES ─── -->
+    <section class="section" id="partenaires">
+        <div class="container text-center">
+            <h2 class="section-title">Nos partenaires</h2>
+            <p class="section-subtitle">Des acteurs engagés à nos côtés.</p>
+            <div class="partners-grid fade-up">
+                <div class="partner-item">
+                    <div class="partner-logo">
+                        <img src="logo-mibatela.png" alt="MIBATELA OPTIQUE" />
+                    </div>
+                    <div class="partner-name">MIBATELA OPTIQUE</div>
+                    <div class="partner-desc">Structure médicale d'appui</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-university"></i></div>
+                    <div class="partner-name">Université Paris Vision</div>
+                    <div class="partner-desc">Formation &amp; études cliniques</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="partner-name">Voir Demain</div>
+                    <div class="partner-desc">Accompagnement social</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-print"></i></div>
+                    <div class="partner-name">Braille & Co</div>
+                    <div class="partner-desc">Impression braille</div>
+                </div>
+                <div class="partner-item">
+                    <div class="partner-logo"><i class="fas fa-microscope"></i></div>
+                    <div class="partner-name">Institut de la Vision</div>
+                    <div class="partner-desc">Recherche &amp; innovation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── STRUCTURES D'APPUI : MIBATELA OPTIQUE ─── -->
+    <section class="section appui-section" id="structures-appui">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Nos structures d'appui</h2>
+                <p class="section-subtitle">Des partenaires techniques et médicaux au service de la vision.</p>
+            </div>
+            <div class="appui-grid fade-up">
+                <div class="appui-content">
+                    <h3>MIBATELA OPTIQUE</h3>
+                    <div class="appui-subtitle">Structure médicale d'appui de la MIADV</div>
+                    <p>La prise en charge de la déficience visuelle commence par deux actions essentielles : prévenir les maladies oculaires et assurer l'accès aux soins lorsqu'elles surviennent.</p>
+                    <p>C'est dans cette perspective que MIBATELA OPTIQUE accompagne la Maison Internationale d'Assistance aux Déficients Visuels (MIADV) en qualité de structure médicale et technique d'appui, spécifiquement dans les domaines de la <strong>PRÉVENTION</strong> et des <strong>SOINS</strong>.</p>
+                    <p>À travers son expertise en santé visuelle, MIBATELA OPTIQUE contribue notamment à la sensibilisation, au dépistage précoce des affections oculaires, aux consultations ophtalmologiques, aux examens diagnostiques, à la correction des troubles visuels, au traitement et à l'orientation des patients nécessitant une prise en charge spécialisée.</p>
+                    <p>Cette collaboration part d'une réalité simple : préserver la vision, c'est aussi préserver l'autonomie, les capacités et les perspectives d'avenir d'une personne.</p>
+                    <p>Dans cette complémentarité, MIBATELA OPTIQUE intervient sur les deux premiers piliers de la MIADV : <strong>PRÉVENIR</strong> et <strong>SOIGNER</strong>. La MIADV poursuit sa mission globale à travers ses quatre piliers :</p>
+                    <div class="pillars-inline">PRÉVENIR – SOIGNER – RÉADAPTER – INCLURE</div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem; font-style: italic; color: var(--gray-muted);">Ainsi, MIBATELA OPTIQUE constitue un appui médical et technique à la mission de la MIADV, tout en conservant son identité et son fonctionnement propres.</p>
+                </div>
+                <div class="appui-video">
+                    <video autoplay muted playsinline loop controls poster="mibatela-poster.jpg">
+                        <source src="mibatela-video.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéo.
+                    </video>
+                    <div class="appui-logo-placeholder">
+                        <img src="logo-mibatela.png" alt="MIBATELA OPTIQUE" style="max-height: 40px;" />
+                        MIBATELA OPTIQUE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPEL AUX DONS ─── -->
+    <section class="donation-section" id="don">
+        <div class="container text-center">
+            <h2 class="section-title" style="color:var(--white);">Votre soutien peut changer une vie.</h2>
+            <p>En soutenant la MIADV, vous contribuez à renforcer l'accompagnement, la réadaptation et l'inclusion des personnes déficientes visuelles.</p>
+            <a href="#" class="btn btn-donation" style="background:var(--green-accent);">Faire un don</a>
+        </div>
+    </section>
+
+    <!-- ─── À PROPOS APPROFONDI ─── -->
+    <section class="section about-page" id="a-propos-approfondi">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">À propos de la MIADV</h2>
+                <p class="section-subtitle">Découvrez notre histoire, notre vision et notre équipe.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Notre vision</h3>
+                    <p>Construire une société où la déficience visuelle n'est pas un frein à l'épanouissement personnel, professionnel et social, en <strong>République démocratique du Congo (RDC) et dans le monde</strong>.</p>
+
+                    <h3>Notre mission</h3>
+                    <p>Prévenir, soigner, réadapter et inclure, en offrant des services de qualité à chaque étape de la vie.</p>
+
+                    <h3>Nos valeurs</h3>
+                    <p>Humanité, solidarité, excellence, respect de la dignité et engagement pour l'inclusion.</p>
+
+                    <h3>Nos objectifs</h3>
+                    <ul>
+                        <li>Prévenir les déficiences visuelles évitables ;</li>
+                        <li>Faciliter l’accès aux soins oculaires ;</li>
+                        <li>Accompagner médicalement, psychologiquement et socialement les personnes déficientes visuelles ;</li>
+                        <li>Développer la réadaptation et l’autonomie ;</li>
+                        <li>Promouvoir le braille et les technologies accessibles ;</li>
+                        <li>Favoriser l’éducation et la formation professionnelle ;</li>
+                        <li>Soutenir l’insertion professionnelle et l’entrepreneuriat ;</li>
+                        <li>Lutter contre la précarité et l’exclusion ;</li>
+                        <li>Promouvoir l’inclusion sociale ;</li>
+                        <li>Mobiliser la solidarité nationale et internationale.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Notre équipe</h3>
+                    <div class="team-grid">
+                        <div class="team-member featured">
+                            <div class="avatar">
+                                <img src="dr-dikuiza.jpg?v=2" alt="Dr. DIKUIZA MAKUBIKUA GLODI" />
+                            </div>
+                            <h4>Dr. DIKUIZA MAKUBIKUA GLODI</h4>
+                            <p>Initiateur, Médecin Ophtalmologue</p>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-md"></i></div>
+                            <h4>Dr. Marc Leblanc</h4>
+                            <p>Co-fondateur, Ophtalmologue</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-md"></i></div>
+                            <h4>Sophie Delacroix</h4>
+                            <p>Co-fondatrice, Orthoptiste</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                            <h4>Julie Moreau</h4>
+                            <p>Directrice des programmes</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                            <h4>Thomas Durand</h4>
+                            <p>Responsable des partenariats</p>
+                        </div>
+                    </div>
+                    <h3 style="margin-top:2rem;">Nos partenaires</h3>
+                    <p>Nous travaillons avec de nombreuses organisations, institutions et entreprises pour maximiser notre impact.</p>
+                    <div class="partners-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px,1fr));">
+                        <div class="partner-item"><div class="partner-logo"><i class="fas fa-hospital-alt"></i></div><div class="partner-name">Fondation Ophtalmo</div></div>
+                        <div class="partner-item"><div class="partner-logo"><i class="fas fa-university"></i></div><div class="partner-name">Université Paris Vision</div></div>
+                        <div class="partner-item"><div class="partner-logo"><i class="fas fa-hand-holding-heart"></i></div><div class="partner-name">Voir Demain</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Nous sommes à votre écoute. N'hésitez pas à nous contacter.</p>
+            </div>
+            <div class="contact-grid fade-up">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <p><i class="fas fa-map-pin" style="color:var(--green-accent);margin-right:8px;"></i> <strong>Siège social</strong><br />19bis KAPELA, YOLO-SUD, KALAMU, KINSHASA - RÉPUBLIQUE DÉMOCRATIQUE DU CONGO</p>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-phone-alt"></i> +243 860 094 836</li>
+                        <li><i class="fas fa-phone-alt"></i> +243 897 470 502</li>
+                        <li><i class="fas fa-envelope"></i> contact@miadv.org</li>
+                        <li><i class="fas fa-clock"></i> Lun–Ven : 9h – 18h</li>
+                        <li><i class="fas fa-calendar-check"></i> Permanences : Mardi &amp; Jeudi 14h–17h</li>
+                    </ul>
+                    <div style="margin-top:1.5rem; background:var(--light-blue); padding:1rem; border-radius:var(--radius);">
+                        <p><i class="fas fa-map-marked-alt" style="color:var(--green-accent);"></i> Carte interactive (simulée)</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 1rem;">
+                        <div>
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" placeholder="Votre nom" required />
+                        </div>
+                        <div>
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="votre@email.fr" required />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" placeholder="+243 ..." />
+                    </div>
+                    <div>
+                        <label for="subject">Sujet *</label>
+                        <input type="text" id="subject" placeholder="Objet de votre message" required />
+                    </div>
+                    <div>
+                        <label for="message">Message *</label>
+                        <textarea id="message" placeholder="Décrivez votre demande…" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%; justify-content:center;">
+                        <i class="fas fa-paper-plane" style="margin-right:10px;"></i> Envoyer le message
+                    </button>
+                    <div id="formFeedback" class="form-feedback" style="margin-top:0.8rem; text-align:center;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>MIADV</h4>
+                    <p style="font-size:0.9rem; opacity:0.7;">Maison Internationale d'Assistance aux Déficients Visuels</p>
+                    <p style="font-size:0.8rem; margin-top:0.3rem; opacity:0.6;">Prévenir · Soigner · Réadapter · Inclure</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#notre-histoire">Notre histoire</a></li>
+                        <li><a href="#a-propos">À propos</a></li>
+                        <li><a href="#services">Nos services</a></li>
+                        <li><a href="#voix">Notre voix</a></li>
+                        <li><a href="#evenement">Événement</a></li>
+                        <li><a href="#actualites">Actualités</a></li>
+                        <li><a href="#structures-appui">Structures d'appui</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos missions</h4>
+                    <ul>
+                        <li><a href="#missions">Prévenir</a></li>
+                        <li><a href="#missions">Soigner</a></li>
+                        <li><a href="#missions">Réadapter</a></li>
+                        <li><a href="#missions">Inclure</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +243 860 094 836</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right:6px;"></i> +243 897 470 502</li>
+                        <li><i class="fas fa-envelope" style="margin-right:6px;"></i> contact@miadv.org</li>
+                        <li><i class="fas fa-map-pin" style="margin-right:6px;"></i> Kinshasa, RDC</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ─── BARRE RÉSEAUX SOCIAUX (CERCLES BLANCS) ─── -->
+            <div class="social-bar">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/19MgHEe6y5/" target="_blank" aria-label="Facebook" class="social-circle">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/Aidonslesatc4r" target="_blank" aria-label="X (Twitter)" class="social-circle">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/miadv-undefined-1abb51431?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn" class="social-circle">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/aveugles2026?igsi=NmhpbTA1amZpbnJk" target="_blank" aria-label="Instagram" class="social-circle">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank" aria-label="YouTube" class="social-circle">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp" class="social-circle">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://tiktok.com/@aidons.les.aveugl" target="_blank" aria-label="TikTok" class="social-circle">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 MIADV — Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        (function() {
+            "use strict";
+
+            // ─── PRELOADER : disparaît au plus tard après 4 secondes ───
+            const preloader = document.getElementById('preloader');
+
+            function hidePreloader() {
+                preloader.classList.add('hidden');
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(hidePreloader, 300);
+            });
+            setTimeout(hidePreloader, 4000);
+
+            // ─── Menu mobile ───
+            const toggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            toggle.addEventListener('click', function() {
+                const open = navLinks.classList.toggle('open');
+                this.setAttribute('aria-expanded', open);
+                this.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            // ─── Header shadow on scroll ───
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                header.classList.toggle('scrolled', window.scrollY > 30);
+            });
+
+            // ─── Fade-up animations ───
+            const fadeElements = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+            fadeElements.forEach(function(el) { observer.observe(el); });
+
+            setTimeout(function() {
+                fadeElements.forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 300);
+
+            // ─── Animated counters ───
+            const counters = document.querySelectorAll('.impact-number');
+            let counted = false;
+
+            function animateCounters() {
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-target'), 10);
+                    var current = 0;
+                    var increment = target / 80;
+                    var update = function() {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.round(current);
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    update();
+                });
+            }
+
+            const impactSection = document.getElementById('impact');
+            const impactObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !counted) {
+                        counted = true;
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.3 });
+            if (impactSection) impactObserver.observe(impactSection);
+
+            // ─── Gallery Lightbox ───
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            galleryItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    var imgSrc = this.getAttribute('data-img');
+                    if (imgSrc) {
+                        lightboxImg.src = imgSrc;
+                        lightbox.classList.add('open');
+                    } else {
+                        lightboxImg.src = 'https://via.placeholder.com/800x800/1a4f7a/ffffff?text=MIADV';
+                        lightbox.classList.add('open');
+                    }
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('open');
+            }
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === this) closeLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // ─── Contact form ───
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('formFeedback');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    feedback.textContent = '⚠️ Veuillez remplir tous les champs obligatoires.';
+                    feedback.style.color = '#b22222';
+                    return;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    feedback.textContent = '⚠️ Veuillez entrer une adresse email valide.';
+                    feedback.style.color = '#b22222';
+                    return;
+                }
+
+                feedback.textContent = '✅ Votre message a été envoyé avec succès ! Nous vous répondrons sous 48h.';
+                feedback.style.color = '#1a7a4a';
+                form.reset();
+                setTimeout(function() {
+                    feedback.textContent = '';
+                }, 6000);
+            });
+
+        })();
+    </script>
+</body>
+</html>
