@@ -1344,11 +1344,13 @@
             color: rgba(255, 255, 255, 0.4);
         }
 
-        /* ─── BARRE RÉSEAUX SOCIAUX EN BAS DU FOOTER ─── */
+        /* ─── BARRE RÉSEAUX SOCIAUX EN BAS DU FOOTER (BLANCHE) ─── */
         .social-bar {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
+            background: #ffffff; /* Fond blanc */
+            padding: 1.2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
             text-align: center;
         }
         .social-bar .social-icons {
@@ -1361,21 +1363,20 @@
             font-size: 1.8rem;
             transition: var(--transition);
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
         }
+        /* Couleurs officielles */
+        .social-bar .social-icons .fa-facebook-f { color: #1877f2; }
+        .social-bar .social-icons .fa-x-twitter { color: #000000; }
+        .social-bar .social-icons .fa-linkedin-in { color: #0a66c2; }
+        .social-bar .social-icons .fa-instagram { color: #e4405f; }
+        .social-bar .social-icons .fa-youtube { color: #ff0000; }
+        .social-bar .social-icons .fa-whatsapp { color: #25d366; }
+        .social-bar .social-icons .fa-tiktok { color: #000000; }
+        /* Effet au survol */
         .social-bar .social-icons a:hover {
             transform: translateY(-4px);
             opacity: 0.8;
-            color: var(--white);
         }
-        /* Couleurs officielles au survol */
-        .social-bar .social-icons a:hover .fa-facebook-f { color: #1877f2; }
-        .social-bar .social-icons a:hover .fa-x-twitter { color: #ffffff; }
-        .social-bar .social-icons a:hover .fa-linkedin-in { color: #0a66c2; }
-        .social-bar .social-icons a:hover .fa-instagram { color: #e4405f; }
-        .social-bar .social-icons a:hover .fa-youtube { color: #ff0000; }
-        .social-bar .social-icons a:hover .fa-whatsapp { color: #25d366; }
-        .social-bar .social-icons a:hover .fa-tiktok { color: #ffffff; }
 
         .fade-up {
             opacity: 0;
@@ -2134,7 +2135,7 @@
                 </div>
             </div>
 
-            <!-- ─── BARRE RÉSEAUX SOCIAUX EN BAS DU FOOTER ─── -->
+            <!-- ─── BARRE BLANCHE RÉSEAUX SOCIAUX ─── -->
             <div class="social-bar">
                 <div class="social-icons">
                     <a href="https://www.facebook.com/share/19MgHEe6y5/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
