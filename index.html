@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MIADV – Maison Internationale d'Assistance aux Déficients Visuels</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" "https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <!-- Font Awesome version stable -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -566,6 +566,27 @@
             margin-top: 0.3rem;
         }
 
+        /* ─── SIRDV-MIADV ─── */
+        .sirdv-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--gray-text);
+        }
+        .sirdv-content p {
+            margin-bottom: 1.2rem;
+        }
+        .sirdv-content .highlight-box {
+            padding: 1.5rem 2rem;
+            background: var(--light-blue);
+            border-radius: var(--radius);
+            border-left: 6px solid var(--gold);
+            font-style: italic;
+            color: var(--gray-text);
+            margin-top: 1.5rem;
+        }
+
+        /* ─── PROGRAMMES ─── */
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1375,7 +1396,7 @@
         }
         /* Couleurs officielles en permanence */
         .social-circle .fa-facebook-f { color: #1877f2; }
-        .social-circle .fa-twitter { color: #000000; }
+        .social-circle .fa-twitter { color: #1D9BF0; } /* X/Twitter bleu vif */
         .social-circle .fa-linkedin-in { color: #0a66c2; }
         .social-circle .fa-instagram { color: #e4405f; }
         .social-circle .fa-youtube { color: #ff0000; }
@@ -1506,11 +1527,12 @@
                 <li><a href="#missions">Nos missions</a></li>
                 <li><a href="#services">Nos services</a></li>
                 <li><a href="#programmes">Nos programmes</a></li>
-                <li><a href="#voix">Notre voix, notre réalité</a></li>
+                <li><a href="#voix">Notre voix</a></li>
                 <li><a href="#evenement">Événement</a></li>
                 <li><a href="#actualites">Actualités</a></li>
                 <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#structures-appui">Structures d'appui</a></li>
+                <li><a href="#sirdv">SIRDV</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#don" class="btn-nav">Faire un don</a></li>
             </ul>
@@ -1703,6 +1725,25 @@
             <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gray-muted);">
                 * Ces chiffres sont temporaires et seront mis à jour avec les données officielles.
             </p>
+        </div>
+    </section>
+
+    <!-- ─── SIRDV-MIADV ─── -->
+    <section class="section" id="sirdv">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">SIRDV-MIADV</h2>
+                <p class="section-subtitle">Système d’Identification et de Registre des Déficients Visuels de la MIADV</p>
+            </div>
+            <div class="sirdv-content fade-up">
+                <p>Le SIRDV-MIADV est un dispositif structuré d’identification, d’enregistrement, de gestion et de suivi des personnes aveugles et malvoyantes prises en charge par la Maison Internationale d’Assistance aux Déficients Visuels (MIADV).</p>
+                <p>Il permet d’attribuer à chaque bénéficiaire enregistré un Numéro Unique d’Identification MIADV (NUI-MIADV), associé à un dossier individuel permettant d’assurer la traçabilité et la continuité de sa prise en charge.</p>
+                <p>Le système centralise les données nécessaires au suivi du bénéficiaire, notamment son profil socio-démographique, sa situation socio-économique, les caractéristiques de sa déficience visuelle, son parcours de soins ophtalmologiques, ses traitements en cours, ses besoins en réadaptation ainsi que les différentes interventions réalisées dans le cadre de son accompagnement et de son inclusion.</p>
+                <p>Déployé progressivement au niveau des différentes représentations de la MIADV, le SIRDV-MIADV constitue un outil de gestion des bénéficiaires, de coordination des interventions et de production de données utiles à la planification des programmes de prévention, de soins, de réadaptation et d’inclusion.</p>
+                <div class="highlight-box">
+                    Les informations enregistrées dans le SIRDV-MIADV sont destinées exclusivement aux besoins de prise en charge, de suivi et de planification des interventions de la MIADV, dans le respect des principes de confidentialité et de protection des données personnelles.
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2117,6 +2158,7 @@
                         <li><a href="#evenement">Événement</a></li>
                         <li><a href="#actualites">Actualités</a></li>
                         <li><a href="#structures-appui">Structures d'appui</a></li>
+                        <li><a href="#sirdv">SIRDV</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -2155,7 +2197,7 @@
                     <a href="https://www.instagram.com/aveugles2026?igsi=NmhpbTA1amZpbnJk" target="_blank" aria-label="Instagram" class="social-circle">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" target="_blank" aria-label="YouTube" class="social-circle">
+                    <a href="https://youtube.com/shorts/86Uq4bEmTY0?si=nu86YXSZk5amOHH2" target="_blank" aria-label="YouTube" class="social-circle">
                         <i class="fab fa-youtube"></i>
                     </a>
                     <a href="https://whatsapp.com/channel/0029Vb8TCO61XqudGqC7Ve2D" target="_blank" aria-label="WhatsApp" class="social-circle">
